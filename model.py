@@ -1,6 +1,7 @@
 """Models and database functions for Scheduling App."""
-
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
 
 # This is the connection to the SQLite database; we're getting this through
 # the Flask-SQLAlchemy helper library. On this, we can find the `session`
@@ -14,13 +15,19 @@ db = SQLAlchemy()
 
 class Unit(db.Model):
 
+    __tablename__ = "units"
+
     unit_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     unit_name = db.Column(db.String(64), nullable=False)
     
-    __tablename__ = "units"
+   
+
+    team = db.relationship("Team", backref=db.backref("units", order_by=unit_id))
 
 
 class Team(db.Model):
+
+    __tablename__ = "teams"
 
     team_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     team_name = db.Column(db.String(64), nullable=False)
@@ -28,11 +35,15 @@ class Team(db.Model):
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), 
                         nullable=False)
 
-    __tablename__ = "teams"
+    
+    course = db.relationship("Course", backref=db.backref("teams", 
+                                order_by=team_id))
 
-    pass
+
 
 class Course(db.Model):
+
+    __tablename__ = "courses"
 
     course_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     course_name = db.Column(db.String(64), nullable=False)
@@ -47,21 +58,28 @@ class Course(db.Model):
                                 nullable=False)
 
 
-    __tablename__ = "courses"
+  
 
-    pass
 
+    training_period = db.relationship("TrainingPeriod", backref=db.backref
+                  ("courses", order_by=course_id))
 class TrainingPeriod(db.Model):
-
-    start_date = db.Column(db.DateTime, nullable=False)
-    end_date = db.Column(db.DateTime, nullable=False)
-    training_type = db.Column(db.String(64), nullable=False)
 
     __tablename__ = "training_period"
 
-    pass
+    training_type = db.Column(db.String(64), nullable=False, primary_key=True)
+    start_date = db.Column(db.DateTime, nullable=False)
+    end_date = db.Column(db.DateTime, nullable=False)
+    
+
+    
+
+
+
 
 class Staff(db.Model):
+
+    __tablename__ = "staff"
 
     staff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     staff_role = db.Column(db.String(64), nullable=False)
@@ -79,39 +97,38 @@ class Staff(db.Model):
 
         return '<Staff %r>' % self.username
 
-    __tablename__ = "staff"
 
-    pass
 
 class Building(db.Model):
+
+    __tablename__ = "buildings"
 
     bldg_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     bldg_name = db.Column(db.String(64), nullable=False)
 
-    __tablename__ = "buildings"
+ 
 
-    pass
+
 
 class Room(db.Model):
+
+    __tablename__ = "rooms"
 
     room_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     room_num = db.Column(db.String(30), nullable=False)
     capacity = db.Column(db.Integer, nullable=True)
-    course_id = db.Column(db.Integer, db.ForeignKey('courses.course_id') 
+    course_id = db.Column(db.Integer, db.ForeignKey('courses.course_id'),
                           nullable=False)
     bldg_id = db.Column(db.Integer, db.ForeignKey('buildings.bldg_id'), 
                         nullable=False)
 
-    __tablename__ = "rooms"
-
-    pass
+    
 
 
 
+# user = db.relationship("User", backref=db.backref("ratings", order_by=rating_id))
 
-model = db.relationship("Model", backref=db.backref("brandname ", order_by=brand_name))
-
-movie = db.relationship("Movie", backref=db.backref("ratings", order_by=rating_id))
+# movie = db.relationship("Movie", backref=db.backref("ratings", order_by=rating_id))
 # End Part 1
 ##############################################################################
 # Helper functions
