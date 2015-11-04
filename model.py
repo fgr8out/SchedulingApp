@@ -17,8 +17,8 @@ class Unit(db.Model):
 
     __tablename__ = "units"
 
-    unit_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    unit_name = db.Column(db.String(64), nullable=False)
+    unit_id = db.Column(db.String, primary_key=True)
+    unit_name = db.Column(db.String(10), nullable=False)
     
    
 
@@ -29,11 +29,11 @@ class Team(db.Model):
 
     __tablename__ = "teams"
 
-    team_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    team_name = db.Column(db.String(64), nullable=False)
-    team_size = db.Column(db.String(64), nullable=True)
+    team_id = db.Column(db.String, primary_key=True)
+    team_name = db.Column(db.String(15), nullable=False)
+    team_size = db.Column(db.Integer, nullable=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), 
-                        nullable=False)
+                        nullable=False, default="unknown")
 
     
     course = db.relationship("Course", backref=db.backref("teams", 
@@ -46,32 +46,39 @@ class Course(db.Model):
     __tablename__ = "courses"
 
     course_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    course_name = db.Column(db.String(64), nullable=False)
-    start_time = db.Column(db.DateTime, nullable=False)
-    end_time = db.Column(db.DateTime, nullable=False)
+    course_name = db.Column(db.String(64), nullable=False, default="unknown")
+    start_time = db.Column(db.DateTime, nullable=True)
+    end_time = db.Column(db.DateTime, nullable=True)
     staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), 
-                         nullable=False)
+                         nullable=False, default="unknown")
     team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
-                        nullable=False)
+                        nullable=False, default="unknown")
     training_period = db.Column(db.String(64), 
-                                db.ForeignKey('training_period.type'), 
-                                nullable=False)
+                                db.ForeignKey('training_period.type_id'), 
+                                nullable=False, default="unknown")
 
 
-  
+class TrainingPeriodCourseAvailabilty(db.Model):
+
+    __tablename__ = "course_availability"
+
+    trackcourse = db.Column(db.Integer, autoincrement=True, primary_key=True) 
+    availablecourses = db.Column(db.Integer, db.ForeignKey('courses.course_id'),
+                          nullable=True, default="unknown")
+    bytrainingcycle = db.Column(db.String(64),
+                      db.ForeignKey('training_period.type_id'), nullable=True)
+    
 
 
-    training_period = db.relationship("TrainingPeriod", backref=db.backref
-                  ("courses", order_by=course_id))
+
 class TrainingPeriod(db.Model):
 
     __tablename__ = "training_period"
 
-    training_type = db.Column(db.String(64), nullable=False, primary_key=True)
+    type_id = db.Column(db.String(10), nullable=False, primary_key=True)
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=False)
-    
-
+    cycle = db.Column(db.String(35), nullable=False)
     
 
 
@@ -81,21 +88,21 @@ class Staff(db.Model):
 
     __tablename__ = "staff"
 
-    staff_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    staff_role = db.Column(db.String(64), nullable=False)
-    first_name = db.Column(db.String(30), nullable=False)
-    last_name = db.Column(db.String(30), nullable=False)
+    staff_id = db.Column(db.String(15), primary_key=True)
+    role = db.Column(db.String(64), nullable=False)
+    firstname = db.Column(db.String(30), nullable=False)
+    lastname = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(64), nullable=True)
     username = db.Column(db.String(30), nullable=True)
     password = db.Column(db.String(30), nullable=True)
 
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
+    # def __init__(self, username, email):
+    #     self.username = username
+    #     self.email = email
 
-    def __repr__(self):
+    # def __repr__(self):
 
-        return '<Staff %r>' % self.username
+    #     return '<Staff %r>' % self.username
 
 
 
@@ -103,8 +110,8 @@ class Building(db.Model):
 
     __tablename__ = "buildings"
 
-    bldg_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    bldg_name = db.Column(db.String(64), nullable=False)
+    bldg_id = db.Column(db.String(5), primary_key=True)
+    bldg_name = db.Column(db.String(30), nullable=False)
 
  
 
@@ -115,12 +122,12 @@ class Room(db.Model):
     __tablename__ = "rooms"
 
     room_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    room_num = db.Column(db.String(30), nullable=False)
+    room_loc = db.Column(db.String(30), nullable=True)
     capacity = db.Column(db.Integer, nullable=True)
-    course_id = db.Column(db.Integer, db.ForeignKey('courses.course_id'),
-                          nullable=False)
-    bldg_id = db.Column(db.Integer, db.ForeignKey('buildings.bldg_id'), 
-                        nullable=False)
+    # course_id = db.Column(db.Integer, db.ForeignKey('courses.course_id'),
+    #                       nullable=True)
+    # bldg_id = db.Column(db.Integer, db.ForeignKey('buildings.bldg_id'), 
+    #                     nullable=True)
 
     
 
