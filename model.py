@@ -20,8 +20,6 @@ class Unit(db.Model):
     unit_id = db.Column(db.String, primary_key=True)
     unit_name = db.Column(db.String(10), nullable=False)
     
-   
-
     team = db.relationship("Team", backref=db.backref("units", order_by=unit_id))
 
 

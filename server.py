@@ -8,8 +8,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db
 
-from model import Building, Course, TrainingPeriodCourseAvailabilty, Room, 
-Staff, Team, TrainingPeriod, Unit
+from model import Building, Course, TrainingPeriodCourseAvailabilty, Room, Staff, Team, TrainingPeriod, Unit
 
 
 
@@ -25,19 +24,48 @@ app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 def index():
-    """Homepage."""
+    """This is a page to test if there is a homepage"""
+
+ 
+
+    testperiod = Course.query.filter(Course.course_id == 1).first()
+    cycle = Course.query.filter(Course.course_id<=20).all()
+    print cycle
+
+    # testteam = Team.query.filter(Team.team_id=='O1').first()
+    # teams = Team.query.filter(Team.team_name.like('%Oak%')).all()
+  
+    # print cycle
+    # for course in cycle
+    #     course
+    # for team in teams:
+    #     team.unit_id = "oak"
+  
+    # db.session.commit()
+
 
     return render_template("homepage.html")
 
 
 
-@app.route('/schedule')
-def user_list():
-    """Page to choose scheduling options."""
 
-@app.route('/dashboard')
-    users = User.query.all()
-    return render_template("schedule.html", users=users)
+
+
+# @app.route('/schedule')
+# def schedule():
+#     """Page to choose scheduling options."""
+
+
+#     return render_template("schedule.html")
+
+   
+# @app.route('/dashboard')
+# def somethingcool():
+#    """Show results from schedule picking on this lovely dashboard"""
+
+#     # users = User.query.all()
+
+#     return render_template("dashboard.html")
 
 
 # @app.route('/login')
@@ -69,10 +97,10 @@ def user_list():
 #         return redirect('/')
 
 
-@app.route('/user_info/<int:user_id>')
-def user_info(user_id):
-    user = User.query.get(user_id)
-    return render_template("user_info.html", user=user)
+# @app.route('/user_info/<int:user_id>')
+# def user_info(user_id):
+#     user = User.query.get(user_id)
+#     return render_template("user_info.html", user=user)
 
 
 
