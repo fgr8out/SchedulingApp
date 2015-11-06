@@ -150,17 +150,17 @@ def load_trainingperiod():
         start_date = items[1]
         end_date = items[2]
 
-    start_date = datetime.strptime(start_date, '%m/%d/%Y')
-    end_date = datetime.strptime(end_date, '%m/%d/%Y')
+        start_date = datetime.strptime(start_date, '%b/%d/%Y')
+        end_date = datetime.strptime(end_date, '%b/%d/%Y')
 
-    trainingperiod = TrainingPeriod(type_id=items[0],
-                    start_date=start_date,
-                    end_date=end_date,
-                    cycle=items[3])
+        trainingperiod = TrainingPeriod(type_id=items[0],
+                        start_date=start_date,
+                        end_date=end_date,
+                        cycle=items[3])
 
-       
+           
 
-    db.session.add(trainingperiod)
+        db.session.add(trainingperiod)
 
     db.session.commit()
 
@@ -192,11 +192,11 @@ if __name__ == "__main__":
     db.create_all()
 
     # Import different types of data
-    load_buildings()
-    load_courses()
-    load_CourseAvailability()
-    load_room()
-    load_staff()
-    load_team()
+    # load_buildings()
+    # load_courses()
+    # load_CourseAvailability()
+    # load_room()
+    # load_staff()
+    # load_team()
     load_trainingperiod()
-    load_unit()
+    # load_unit()

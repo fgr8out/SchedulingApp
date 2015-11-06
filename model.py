@@ -78,7 +78,12 @@ class TrainingPeriod(db.Model):
     end_date = db.Column(db.DateTime, nullable=False)
     cycle = db.Column(db.String(35), nullable=False)
     
-
+    def __init__(self, type_id, start_date, end_date, cycle):
+        self.type_id = type_id
+        self.start_date = start_date
+        self.end_date = end_date
+        self.cycle = cycle
+        
 
 
 

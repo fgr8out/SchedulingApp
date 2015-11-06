@@ -26,25 +26,24 @@ app.jinja_env.undefined = StrictUndefined
 def index():
     """This is a page to test if there is a homepage"""
 
- 
 
-    testperiod = Course.query.filter(Course.course_id == 1).first()
-    cycle = Course.query.filter(Course.course_id<=20).all()
-    print cycle
+    # testperiod = Course.query.filter(Course.course_id == 1).first()
+    # cycle = Course.query.filter(Course.course_id<=20).all()
+    # print cycle
 
     # testteam = Team.query.filter(Team.team_id=='O1').first()
     # teams = Team.query.filter(Team.team_name.like('%Oak%')).all()
   
     # print cycle
     # for course in cycle
-    #     course
+    #     course.
     # for team in teams:
-    #     team.unit_id = "oak"
+        # team.unit_id = "oak"
   
     # db.session.commit()
 
 
-    return render_template("homepage.html")
+    # return render_template("homepage.html")
 
 
 
