@@ -21,87 +21,161 @@ app.secret_key = "ABC"
 # This is horrible. Fix this so that, instead, it raises an error.
 app.jinja_env.undefined = StrictUndefined
 
-
 @app.route('/')
-def index():
-    """This is a page to test if there is a homepage"""
+def splash_login():
+    """This is where the user will login"""
 
 
-    # testperiod = Course.query.filter(Course.course_id == 1).first()
-    # cycle = Course.query.filter(Course.course_id<=20).all()
-    # print cycle
-
-    # testteam = Team.query.filter(Team.team_id=='O1').first()
-    # teams = Team.query.filter(Team.team_name.like('%Oak%')).all()
-  
-    # print cycle
-    # for course in cycle
-    #     course.
-    # for team in teams:
-        # team.unit_id = "oak"
-  
-    # db.session.commit()
-
-
-    # return render_template("homepage.html")
+    return render_template("login.html")
 
 
 
+@app.route('/schedule')
+def choose_schedule():
+    """Homepage."""
 
 
+    return render_template("schedule.html")
 
-# @app.route('/schedule')
-# def schedule():
-#     """Page to choose scheduling options."""
+# needs a post method @ some point
+@app.route('/dashboard')
+def process_request():
+    """Show result of schedule choices on dashboard."""
 
 
-#     return render_template("schedule.html")
+    return render_template("dashboard.html")
 
+
+# @app.route('/register', methods=['POST'])
+# def register_process():
+#     """Process registration."""
+
+#     # Get form variables
+#     email = request.form["email"]
+#     password = request.form["password"]
    
-# @app.route('/dashboard')
-# def somethingcool():
-#    """Show results from schedule picking on this lovely dashboard"""
 
-#     # users = User.query.all()
+#     new_user = User(email=email, password=password)
 
-#     return render_template("dashboard.html")
+#     db.session.add(new_user)
+#     db.session.commit()
 
-
-# @app.route('/login')
-# def show_login():
-#     """Show login page"""
-#     return render_template("login.html")
+#     flash("User %s added." % email)
+#     return redirect("/")
 
 
+# @app.route('/login', methods=['GET'])
+# def login_form():
+#     """Show login form."""
 
-# @app.route('/handle-login', methods=['POST'])
-# def handle_login():
-#     """Process login form"""
+#     return render_template("login_form.html")
 
-#     username = request.form['username']
-#     password = request.form['password']
 
-#     user = User.query.filter_by(email = username).first()
-#     if user:
-#         if user.password == password:
-#             session['user'] = username
-#             flash("Logged in as %s" % username)
-#             return redirect('user_info/%s' % user.user_id)
-#         else: 
-#             flash("Wrong password!")
-#             return redirect('/')
+# @app.route('/login', methods=['POST'])
+# def login_process():
+#     """Process login."""
+
+#     # Get form variables
+#     email = request.form["email"]
+#     password = request.form["password"]
+
+#     user = User.query.filter_by(email=email).first()
+
+#     if not user:
+#         flash("No such user")
+#         return redirect("/login")
+
+#     if user.password != password:
+#         flash("Incorrect password")
+#         return redirect("/login")
+
+#     session["user_id"] = user.user_id
+
+#     flash("Logged in")
+#     return redirect("/users/%s" % user.user_id)
+
+
+# @app.route('/logout')
+# def logout():
+#     """Log out."""
+
+#     del session["user_id"]
+#     flash("Logged Out.")
+#     return redirect("/")
+
+
+# @app.route("/users")
+# def user_list():
+#     """Show list of users."""
+
+#     users = User.query.all()
+#     return render_template("user_list.html", users=users)
+
+
+# @app.route("/users/<int:user_id>")
+# def user_detail(user_id):
+#     """Show info about user."""
+
+#     user = User.query.get(user_id)
+#     return render_template("user.html", user=user)
+
+
+# @app.route("/movies")
+# def movie_list():
+#     """Show list of movies."""
+
+#     movies = Movie.query.order_by('title').all()
+#     return render_template("movie_list.html", movies=movies)
+
+
+# @app.route("/movies/<int:movie_id>", methods=['GET'])
+# def movie_detail(movie_id):
+#     """Show info about movie.
+
+#     If a user is logged in, let them add/edit a rating.
+#     """
+
+#     movie = Movie.query.get(movie_id)
+
+#     user_id = session.get("user_id")
+
+#     if user_id:
+#         user_rating = Rating.query.filter_by(
+#             movie_id=movie_id, user_id=user_id).first()
 
 #     else:
-#         flash("Sorry, this username does not exist!")
-#         return redirect('/')
+#         user_rating = None
+
+#     return render_template("movie.html",
+#                            movie=movie,
+#                            user_rating=user_rating)
 
 
-# @app.route('/user_info/<int:user_id>')
-# def user_info(user_id):
-#     user = User.query.get(user_id)
-#     return render_template("user_info.html", user=user)
+# @app.route("/movies/<int:movie_id>", methods=['POST'])
+# def movie_detail_process(movie_id):
+#     """Add/edit a rating."""
 
+#     # Get form variables
+#     score = int(request.form["score"])
 
+#     user_id = session.get("user_id")
+#     if not user_id:
+#         raise Exception("No user logged in.")
+
+#     rating = Rating.query.filter_by(user_id=user_id, movie_id=movie_id).first()
+
+#     if rating:
+#         rating.score = score
+#         flash("Rating updated.")
+
+#     else:
+#         rating = Rating(user_id=user_id, movie_id=movie_id, score=score)
+#         flash("Rating added.")
+#         db.session.add(rating)
+
+#     db.session.commit()
+
+#     return redirect("/movies/%s" % movie_id)
 
 
 
