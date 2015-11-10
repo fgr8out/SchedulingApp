@@ -32,30 +32,35 @@ class Team(db.Model):
     team_size = db.Column(db.Integer, nullable=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), 
                         nullable=False, default="unknown")
-
     
     course = db.relationship("Course", backref=db.backref("teams", 
                                 order_by=team_id))
 
 
-
+# CS 101
 class Course(db.Model):
 
     __tablename__ = "courses"
 
     course_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     course_name = db.Column(db.String(64), nullable=False, default="unknown")
-    start_time = db.Column(db.DateTime, nullable=True)
-    end_time = db.Column(db.DateTime, nullable=True)
-    staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), 
-                         nullable=False, default="unknown")
+
+    # staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), nullable=False, default="unknown")
+    # training_period = db.Column(db.String(64), db.ForeignKey('training_period.type_id'), nullable=False, default="unknown")
+
+
+# Fall 2015 semester, CS 101  <-->  team_id
+class CourseAssignment(db.Model):
+
+    __tablename__ = "course_assignment"
+
+    assign_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
                         nullable=False, default="unknown")
-    training_period = db.Column(db.String(64), 
-                                db.ForeignKey('training_period.type_id'), 
-                                nullable=False, default="unknown")
+    type_id = db.Column(db.String(10), nullable=False, ForeignKey("course_availability.trackcourse"))
 
 
+# Fall 2015 semester, CS 101
 class TrainingPeriodCourseAvailabilty(db.Model):
 
     __tablename__ = "course_availability"
@@ -65,10 +70,25 @@ class TrainingPeriodCourseAvailabilty(db.Model):
                           nullable=True, default="unknown")
     bytrainingcycle = db.Column(db.String(64),
                       db.ForeignKey('training_period.type_id'), nullable=True)
-    
+    staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), 
+                         nullable=False, default="unknown")
+    # team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
+                        # nullable=False, default="unknown")
+   
+
+# Fall 2015 semester, CS 101 -- each individual class
+class TrainingPeriodCourseAvailabilitySession(db.Model):
+
+    __tablename__ = "course_by_datetime"
+
+    timedate_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    trngperiod_courses = db.Column(db.Integer, db.ForeignKey("course_availability.trackcourse")nullable=False, default="unknown")
+    start_time = db.Column(db.DateTime, nullable=True)
+    end_time = db.Column(db.DateTime, nullable=True)
+    room_id = db.Column(db.Integer, ForeignKey("rooms.room_id"), nullable=False, default="unknown")
 
 
-
+# Fall 2015 semester
 class TrainingPeriod(db.Model):
 
     __tablename__ = "training_period"
@@ -84,7 +104,6 @@ class TrainingPeriod(db.Model):
         self.end_date = end_date
         self.cycle = cycle
         
-
 
 
 class Staff(db.Model):
@@ -108,7 +127,6 @@ class Staff(db.Model):
     #     return '<Staff %r>' % self.username
 
 
-
 class Building(db.Model):
 
     __tablename__ = "buildings"
@@ -117,8 +135,6 @@ class Building(db.Model):
     bldg_name = db.Column(db.String(30), nullable=False)
 
  
-
-
 
 class Room(db.Model):
 
@@ -129,17 +145,15 @@ class Room(db.Model):
     capacity = db.Column(db.Integer, nullable=True)
     # course_id = db.Column(db.Integer, db.ForeignKey('courses.course_id'),
     #                       nullable=True)
-    # bldg_id = db.Column(db.Integer, db.ForeignKey('buildings.bldg_id'), 
-    #                     nullable=True)
+    bldg_id = db.Column(db.Integer, db.ForeignKey('buildings.bldg_id'), 
+                        nullable=True)
+
+
 
     
-
-
-
 # user = db.relationship("User", backref=db.backref("ratings", order_by=rating_id))
-
 # movie = db.relationship("Movie", backref=db.backref("ratings", order_by=rating_id))
-# End Part 1
+
 ##############################################################################
 # Helper functions
 

@@ -8,7 +8,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db
 
-from model import Building, Course, TrainingPeriodCourseAvailabilty, Room, Staff, Team, TrainingPeriod, Unit
+from model import Building, Course, TrainingPeriodCourseAvailabilty, Room, 
+Staff, Team, TrainingPeriod, Unit
 
 
 
