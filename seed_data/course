@@ -1,42 +1,185 @@
-1,Corps Member Arrival Day
-2,Corps Welcome
-3,Floor Meetings
-4,All Corps Muster
-5,Community Meeting
-6,Residence Hall Orientation
-7,Rep Role Information Session
-8,Web Portal Training
-9,CNCS Training
-10,Member Benefits Overview
-11,A*NCCC Policies & Procedures
-12,Orientation to CCC Presentations
-13,In-Processing Training
-14,Residence Hall Processes  and Procedures
-15,ISP Training
-16,Orientation to CTI
-17,Group Meetings
-18,Ethics and EEO Training
-19,Drug Tests and TB and Tetnus Shots
-20,Exploring the Community
-21,Physical Training
-22,Portfolio Training
-23,Unit Meeting
-24,Rep Role Fair
-25,Discuss CTI Projects
-26,Team Meetings
-27,Disaster Services and Overview
-28,Shelter Fundamentals
-29,Project Service Learning Training
-26,Ropes Course
-27,Tool Training
-28,Quality of Life Training
-29,MBTI Mind Setting
-30,Safety Training
-31,Recruiter Training
-32,POL Training
-33,Support Ranger Training
-34,VST Training
-35,SLI Training
-36,Media Rep Training
-37,Room Inspections
-38,Being an Ally
+1,Team,Leader,Arrival,Day
+2,Residence,Hall,Check-in
+3,Member,Support,Office,Check-In
+4,Unit,Welcome
+5,Residence,Hall,Orientation
+6,Breakfast
+7,Breakfast
+8,Orientation,to,Drug,&,TB,Test
+9,Drug,,TB,Tests,&,Tetnus,Shots
+10,Welcome,by,Management,Team
+11,In-Processing
+12,Copier,,Mail,,Fax
+13,Kitchen,Inspection,Training
+14,Orientation,to,TLT
+15,Introduction,to,Units
+16,Clicker,Orientation
+17,Program,Policies,Part,I
+18,Program,Policies,Part,II
+19,Program,Policies,Part,III
+20,Program,Policies,Part,IV
+21,Government,Vehicles,Classroom,Part,1
+22,Lunch
+23,Team,Building
+24,Unit,Development
+25,Exploring,the,Community
+26,Exploring,the,Community
+27,Dinner
+28,Dinner
+29,Unit,Reveal
+30,Government,Vehicles,Hands-On,Training
+31,Intro,to,MBTI
+32,TLT,Check-In
+33,Road,Tests
+34,Baselines
+35,Overview,of,PT
+36,Roles,of,the,TL
+37,Tool,Kit,Training,Part,1
+38,Tool,Kit,Training,Part,2
+39,Supervisory,Skills,Training
+40,Member,Management,Part,I
+41,Forms,Training
+42,Project,Completion,Report,Training
+43,Project,Handoff,and,Briefing,Process
+44,Member,Management,Part,II
+45,Member,Management,Part,III
+46,Member,Management,Part,IV
+47,Member,Management,Part,V
+48,Corps,Support,Scenarios
+49,Financial,Management,Training,Part,I
+50,Financial,Management,Training,Part,II
+51,Hands,of,Peace,Experiential
+52,Unit,Procedure,during,CTI
+53,The,Amazing,Race
+54,TLT,Debrief
+55,Prepare,for,CM,Arrival,Day
+56,CTI,Discussion,Round,Table
+57,Portfolio,Training
+58,Portfolio,Training
+59,Project,Process,&,Training,Overview
+60,Project,Process,&,Training,Overview
+61,Room,Inspections,
+62,Room,Inspections,
+63,Room,Inspections,
+64,Room,Inspections,
+65,Room,Inspections,
+66,Room,Inspections,
+67,Community,Meeting
+68,Community,Meeting
+69,Community,Meeting
+70,Community,Meeting
+71,Community,Meeting
+72,Community,Meeting
+73,Community,Meeting
+74,Corps,Member,Arrival,Day
+75,Corps,Welcome
+76,Residence,Hall,Orientation
+77,Rep,Role,Information,Session
+78,Floor,Meetings
+79,All,Corps,Muster
+80,Orientation,to,CCC,Presentation
+81,Web,Portal,Training
+82,CNCS,Training
+83,Ethics,and,EEO,Training
+84,ISP,Training
+85,Residence,Hall,Processes,&,Procedures
+86,Unit,Meeting
+87,Unit,Meeting
+88,Unit,Meeting
+89,Unit,Meeting
+90,Unit,Meeting
+91,Unit,Meeting
+92,Unit,Meeting
+93,A*NCCC,Policies,&,Procedures
+94,Orientation,to,CCC,Presentations
+95,In-Processing,Training
+96,Residence,Hall,Processes,and,Procedures
+97,ISP,Training
+98,Orientation,to,CTI
+99,CTI,Projects
+100,Team,Time
+101,CTI,Project
+102,Hands,of,Peace
+103,Van,Drivers,Road,Test,and,Experiential
+104,Group,Meetings
+105,Ethics,and,EEO,Training
+106,Drug,Tests,and,TB,and,Tetnus,Shots
+107,Physical,Training
+108,Portfolio,Training
+109,CPR/FA/AED,Training
+110,Rep,Role,Fair
+111,Discuss,CTI,Projects
+112,Team,Meetings
+113,Disaster,Services,and,Overview
+114,Shelter,Fundamentals
+115,Project,Service,Learning,Training
+116,Ropes,Course
+117,Tool,Training
+118,Quality,of,Life,Training
+119,MBTI,Mind,Setting
+120,Safety,Training
+121,Professional,Accountability
+122,Corps,Development,Training
+123,Chainsaw,Training,Classroom
+124,Chainsaw,Training,Experiential
+125,Recruiter,Training
+126,Recruiter,Training
+127,Recruiter,Training
+128,Recruiter,Training
+129,Recruiter,Training
+130,POL,Training
+131,POL,Training
+132,POL,Training
+133,POL,Training
+134,POL,Training
+135,Support,Ranger,Training
+136,Support,Ranger,Training
+137,Support,Ranger,Training
+138,Support,Ranger,Training
+139,Support,Ranger,Training
+140,VST,Training
+141,VST,Training
+142,VST,Training
+143,VST,Training
+144,VST,Training
+145,SLI,Training
+146,SLI,Training
+147,SLI,Training
+148,SLI,Training
+149,SLI,Training
+150,Media,Rep,Training
+151,Media,Rep,Training
+152,Media,Rep,Training
+153,Media,Rep,Training
+154,Media,Rep,Training
+155,Project,Briefings
+156,Project,Briefings
+157,Project,Briefings
+158,Project,Briefings
+159,Project,Debriefs
+160,Project,Debriefs
+161,Project,Debriefs
+162,Project,Debriefs
+163,Project,Debriefs
+164,Supply,Check-In
+165,Supply,Check-In
+166,Supply,Check-In
+167,Supply,Check-In
+168,Supply,Check-In
+169,Supply,Check-Out
+170,Supply,Check-Out
+171,Supply,Check-Out
+172,Supply,Check-Out
+173,Supply,Check-Out
+174,MBTI,Training
+175,Being,an,Ally
+176,All-Corps,Photo
+177,Resume,Session
+178,ASVAB,Session
+179,LAA,Information,Session
+180,Out-Processing,Information,Session
+181,Awards,Dinner,&,Show
+182,AmeriCorps,Alums,Presentation
+183,College,Credit,Testing
+184,End,of,Year,Survey/Portal,Closeout
+185,Corps,PT,Baselines

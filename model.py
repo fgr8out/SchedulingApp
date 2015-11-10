@@ -33,8 +33,8 @@ class Team(db.Model):
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), 
                         nullable=False, default="unknown")
     
-    course = db.relationship("Course", backref=db.backref("teams", 
-                                order_by=team_id))
+    # course = db.relationship("Course", backref=db.backref("teams", 
+    #                             order_by=team_id))
 
 
 # CS 101
@@ -57,11 +57,13 @@ class CourseAssignment(db.Model):
     assign_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
                         nullable=False, default="unknown")
-    type_id = db.Column(db.String(10), nullable=False, ForeignKey("course_availability.trackcourse"))
+    type_id = db.Column(db.String(10), nullable=False, ForeignKey(
+        "course_availability.trackcourse"))
 
 
 # Fall 2015 semester, CS 101
-class TrainingPeriodCourseAvailabilty(db.Model):
+# Course Availability by Training Period
+class CourseAvailabilty(db.Model):
 
     __tablename__ = "course_availability"
 
@@ -76,8 +78,10 @@ class TrainingPeriodCourseAvailabilty(db.Model):
                         # nullable=False, default="unknown")
    
 
+# Course Options by datetime 
 # Fall 2015 semester, CS 101 -- each individual class
-class TrainingPeriodCourseAvailabilitySession(db.Model):
+# course.assignment txt file
+class CourseByDateTime(db.Model):
 
     __tablename__ = "course_by_datetime"
 
@@ -88,7 +92,7 @@ class TrainingPeriodCourseAvailabilitySession(db.Model):
     room_id = db.Column(db.Integer, ForeignKey("rooms.room_id"), nullable=False, default="unknown")
 
 
-# Fall 2015 semester
+# i.e TLT, CTI, 
 class TrainingPeriod(db.Model):
 
     __tablename__ = "training_period"

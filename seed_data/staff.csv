@@ -1,3 +1,4 @@
+staff_id,title,first_name,last_name
 APD1,Assistant Program Director,Jeff,Moeur
 APD2,Assistant Program Director,Alana,Svensen
 APD3,Assistant Program Director,John,Trotta
@@ -18,17 +19,17 @@ CRA,Community Relations Associate,Jacklyn,Shearer
 APDT,Assistant Program Director for Training,Audra,Piotti
 TS,Training Specialist,Gustavo,Davila
 MDA,Member Development Associate,Marsha,Martin
-PA,Program Associate,Kellie Meaningless
+PA,Program Associate,Kellie Meaningless,
 POPA,Program Office Program Associate,Erin,Harmone
 CNLR,Counselor,Samuel,White
 FM,Fleet Manager,Chastity,Schultz
-RC,Residence Coordinator,Tosha Beaux
-AllAPD,Assistant Program Directors,All
-AllUL,Unit Leaders,All
-Staff,All Staff
-TL,Team Leaders
-STL,Support Team Leaders
-POSTL, Program Office Support Team Leader
-Corps,All Corps
-MT,Management Team
-OUT,Outside Contractor,Varies
+RC,Residence Coordinator,Tosha Beaux,
+AllAPD,Assistant Program Directors,All,
+AllUL,Unit Leaders,All,
+Staff,All Staff,,
+TL,Team Leaders,,
+STL,Support Team Leaders,,
+POSTL, Program Office Support Team Leader,,
+Corps,All Corps,,
+MT,Management Team,,
+OUT,Outside Contractor,Varies,

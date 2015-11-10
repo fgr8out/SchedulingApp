@@ -3,13 +3,14 @@
 
 from model import Building
 from model import Course
-from model import TrainingPeriodCourseAvailabilty
+from model import CourseAvailability
 from model import Room
 from model import Staff
 from model import Team
 from model import TrainingPeriod
 from model import Unit
-
+from model import CourseAssignment
+from model import CourseByDatetime
 
 
 from model import connect_to_db, db
@@ -17,8 +18,8 @@ from server import app
 from datetime import datetime
 
 
-def load_buildings():
-    """Load users from building into database."""
+def load_Building():
+    """Load building names into database."""
 
     print "Buildings"
 
@@ -41,7 +42,7 @@ def load_buildings():
     db.session.commit()
 
 
-def load_courses():
+def load_Course():
     """Load courses from course.csv into database."""
 
     print "Courses"
@@ -61,24 +62,33 @@ def load_courses():
 
 
 def load_CourseAvailability():
-    """Assoc table to connect course availability by training period into database."""
+    """Assocation table to connect course availability by training period"""
 
     print "Course Availability"
     
-    TrainingPeriodCourseAvailabilty.query.delete()
+    CourseAvailability.query.delete()
 
     for row in open("seed_data/course.availability"):
         row = row.strip()
         items = row.split(",")
 
-        availability = TrainingPeriodCourseAvailability(trackcourse=items[0])
+        availability = CourseAvailability(trackcourse=items[0])
 
-        db.session.add(course.availabilty)
+        db.session.add(availabilty)
 
     db.session.commit()
 
 
-def load_room():
+def load_CourseAssignment
+    """Association table to connect course assignments by team_id"""
+
+    print "Course Assignment"
+
+    CourseAssignment.query.delete()
+
+    for row in open("seed_data/course.assignment")
+
+def load_Room():
     """Load room numbers from room.csv into database."""
 
     print "rooms"
@@ -96,7 +106,7 @@ def load_room():
 
     db.session.commit()
 
-def load_staff():
+def load_Staff():
     """Load staff information from staff.csv into database."""
 
     print "staff"
@@ -117,7 +127,7 @@ def load_staff():
     db.session.commit()
 
 
-def load_team():
+def load_Team():
     """Load teams info from team.csv into database."""
 
     print "teams"
@@ -137,7 +147,7 @@ def load_team():
     db.session.commit()
 
 
-def load_trainingperiod():
+def load_TrainingPeriod():
     """Load training periods from trainingperiod.csv into database."""
 
     print "training period"
@@ -165,7 +175,7 @@ def load_trainingperiod():
     db.session.commit()
 
 
-def load_unit():
+def load_Unit():
     """Load units from unit.csv into database."""
 
     print "units"
@@ -192,11 +202,12 @@ if __name__ == "__main__":
     db.create_all()
 
     # Import different types of data
-    # load_buildings()
-    # load_courses()
-    # load_CourseAvailability()
-    # load_room()
-    # load_staff()
-    # load_team()
-    load_trainingperiod()
-    # load_unit()
+    load_Buildings()
+    load_Courses()
+    load_CourseAvailability()
+    load_CourseAssignment()
+    load_Room()
+    load_Staff()
+    load_Team()
+    load_TrainingPeriod()
+    load_Unit()

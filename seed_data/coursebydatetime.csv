@@ -1,0 +1,63 @@
+date_ID,course_ID,course_name,start_time,end_time,duration,location,staff_id
+1/6/16,1,Team Leader Arrival Day,9:00:00 AM,3:00:00 PM,6h ,,AllUL
+1/6/16,2,Residence Hall Check-in,9:00:00 AM,4:40:00 PM,6h40m,SB,"RC,SSS"
+1/6/16,3,Member Support Office Check-In,9:00:00 AM,5:00:00 PM,7h,"PH,26",MSS
+1/6/16,4,Unit Welcome,5:05:00 PM,5:30:00 PM,25min,"PH,100",AllUL
+1/6/16,5,Residence Hall Orientation,6:30:00 PM,8:00:00 PM,1h30m,"PH,100","RC,SSS"
+1/7/16,6,Breakfast,6:25:00 AM,6:50:00 AM,25min,"PH,116",
+1/7/16,7,Orientation to Drug & TB Test,8:15:00 AM,8:40:00 AM,25min,"MB,1","RM,CNLR"
+1/8/16,8,"Drug, TB Tests & Tetnus Shots",7:15:00 AM,8:00:00 AM,45min,OUT,CNLR
+1/7/16,9,Welcome by Management Team,8:40:00 AM,8:55:00 AM,15min,"MB,1",RD
+1/7/16,10,In-Processing,9:00:00 AM,10:10:00 AM,1h10m,"PH,100",MSS
+1/7/16,11,"Copier, Mail, Fax",10:15:00 AM,10:35:00 AM,20min,"PH,100",PA
+1/7/16,12,Kitchen Inspection Training,10:45:00 AM,11:45:00 AM,1h,"RH,9",RC 
+1/7/16,13,Orientation to TLT,12:40:00 PM,3:00:00 PM,2h20m,"RH,9",APDT
+,14,Introduction to Units,3:05:00 PM,4:05:00 PM,1h,"RH,15",AllUL
+,15,Clicker Orientation,,,,,
+,16,Program Policies Part I,,,,,
+,17,Program Policies Part II,,,,,
+,18,Program Policies Part III,,,,,
+,19,Program Policies Part IV,,,,,
+,20,Government Vehicles Classroom Part 1,,,,,
+,21,Lunch,,,,,
+,22,Team Building,,,,,
+,23,Unit Development,,,,,
+,24,Exploring the Community,,,,,
+1/30/16,25,Dinner,,,,,
+1/31/16,26,Unit Reveal,,,,,
+2/1/16,27,Government Vehicles Hands-On Training,,,,,
+2/2/16,28,Intro to MBTI,,,,,
+2/3/16,29,TLT Check-In,,,,,
+2/4/16,30,Road Tests,,,,,
+2/5/16,31,Baselines,,,,,
+2/6/16,32,Overview of PT,,,,,
+2/7/16,33,Roles of the TL,,,,,
+2/8/16,34,Tool Kit Training Part 1,,,,,
+2/9/16,35,Tool Kit Training Part 2,,,,,
+2/10/16,36,Supervisory Skills Training,,,,,
+2/11/16,37,Member Management Part I,,,,,
+2/12/16,38,Forms Training,,,,,
+2/13/16,39,Project Completion Report Training,,,,,
+2/14/16,40,Project Handoff and Briefing Process,,,,,
+2/15/16,41,Member Management Part II,,,,,
+2/16/16,42,Member Management Part III,,,,,
+2/17/16,43,Member Management Part IV,,,,,
+,44,Member Management Part V,,,,,
+,45,Corps Support Scenarios,,,,,
+,46,Financial Management Training Part I,,,,,
+,47,Financial Management Training Part II,,,,,
+,48,Hands of Peace Experiential,,,,,
+,49,Unit Procedure during CTI,,,,,
+,50,The Amazing Race,,,,,
+,51,TLT Debrief,,,,,
+,52,Prepare for CM Arrival Day,,,,,
+,53,CTI Discussion Round Table,,,,,
+,54,Portfolio Training,,,,,
+,55,Project Process & Training Overview,,,,,
+,56,Room Inspections ,,,,,
+,57,Community Meeting,,,,,
+,58,Unit Meeting,,,,,
+,59,Government Vehicles Hands-On Training,,,,,
+,60,Government Vehicles Hands-On Training,,,,,
+,61,Unit Meeting,,,,,
+,62,Unit Meeting,,,,,

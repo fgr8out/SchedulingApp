@@ -1,0 +1,202 @@
+course_id,course_name,training_period,staff_id
+1,Team Leader Arrival Day,1,AllUL
+2,Residence Hall Check-in,1,AllUL
+3,Member Support Office Check-In,1,MSS
+4,Unit Welcome,1,AllUL
+5,Residence Hall Orientation,1,RC
+6,Breakfast,1,DRDO
+7,Orientation to Drug & TB Test,1,APDT
+8,"Drug, TB Tests & Tetnus Shots",1,CNLR
+9,Welcome by Management Team,1,MT
+10,In-Processing,1,Staff
+11,"Copier, Mail, Fax",1,PA
+12,Kitchen Inspection Training,1,RC
+13,Orientation to TLT,1,APDT
+14,Introduction to Units,1,AllUL
+15,Clicker Orientation,1,TS
+16,Program Policies Part I,1,AllUL
+17,Program Policies Part II,1,AllUL
+18,Program Policies Part III,1,AllUL
+19,Program Policies Part IV,1,AllUL
+20,Government Vehicles Classroom Part 1,1,FM
+21,Lunch,1,TL
+22,Team Building,1,TL
+23,Unit Development,1,AllUL
+24,Exploring the Community,1,APDT
+25,Dinner,1,TL
+26,Unit Reveal,1,AllUL
+27,Government Vehicles Hands-On Training,1,FM
+28,Intro to MBTI,1,APDT
+29,TLT Check-In,1,AllUL
+30,Road Tests,1,AllStaff
+31,Baselines,1,DRDO
+32,Overview of PT,1,DRDO
+33,Roles of the TL,1,AllUL
+34,Tool Kit Training Part 1,1,AllUL
+35,Tool Kit Training Part 2,1,AllUL
+36,Supervisory Skills Training,1,OUT
+37,Member Management Part I,1,AllUL
+38,Forms Training,1,AllUL
+39,Project Completion Report Training,1,POPA
+40,Project Handoff and Briefing Process,1,DRDP
+41,Member Management Part II,1,AllUL
+42,Member Management Part III,1,AllUL
+43,Member Management Part IV,1,AllUL
+44,Member Management Part V,1,AllUL
+45,Corps Support Scenarios,1,CNLR
+46,Financial Management Training Part I,1,RM
+47,Financial Management Training Part II,1,RM
+48,Hands of Peace Experiential,1,AllUL
+49,Unit Procedure during CTI,1,AllUL
+50,The Amazing Race,1,APDT
+51,TLT Debrief,1,DRDP
+52,Prepare for CM Arrival Day,1,DRDO
+53,CTI Discussion Round Table,1,RD
+54,Portfolio Training,1,AllUL
+55,Project Process & Training Overview,1,DRDP
+56,Room Inspections ,1,AllUL
+57,Community Meeting,1,POSTL
+58,Unit Meeting,1,UL1
+59,Government Vehicles Hands-On Training,1,SSS
+60,Government Vehicles Hands-On Training,1,LA
+61,Unit Meeting,1,UL2
+62,Unit Meeting,1,UL3
+63,Breakfast,2,DRDO
+64,Exploring the Community,2,APDT
+65,Dinner,2,TL
+66,Portfolio Training,2,AllUL
+67,Project Process & Training Overview,2,DRDP
+68,Community Meeting,2,STL
+69,Corps Member Arrival Day,2,AllStaff
+70,Corps Welcome,2,AllStaff
+71,Residence Hall Orientation,2,RC
+72,Rep Role Information Session,2,AllStaff
+73,Floor Meetings,2,AllUL
+74,All Corps Muster,2,TL
+75,Orientation to CCC Presentation,2,UL2
+76,Web Portal Training,2,MSS
+77,CNCS Training,2,CRS
+78,Ethics and EEO Training,2,OUT
+79,ISP Training,2,AllUL
+80,Residence Hall Processes & Procedures,2,RC
+81,Unit Meeting,2,UL1
+82,Unit Meeting,2,UL2
+83,Unit Meeting,2,UL3
+84,Room Inspections ,3,AllUL
+85,Community Meeting,3,TL
+86,Unit Meeting,3,UL1
+87,A*NCCC Policies & Procedures,3,
+88,Orientation to CCC Presentations,3,
+89,In-Processing Training,3,
+90,Residence Hall Processes and Procedures,3,
+91,ISP Training,3,
+92,Orientation to CTI,3,
+93,CTI Projects,3,
+94,Team Time,3,
+95,CTI Project,3,
+96,Hands of Peace,3,
+97,Van Drivers Road Test and Experiential,3,
+98,Group Meetings,3,
+99,Ethics and EEO Training,3,
+100,Drug Tests and TB and Tetnus Shots,3,
+101,Physical Training,3,
+102,Portfolio Training,3,
+103,CPR/FA/AED Training,3,
+104,Rep Role Fair,3,
+105,Discuss CTI Projects,3,
+106,Team Meetings,3,
+107,Disaster Services and Overview,3,
+108,Shelter Fundamentals,3,
+109,Project Service Learning Training,3,
+110,Ropes Course,3,
+111,Tool Training,3,
+112,Quality of Life Training,3,
+113,MBTI Mind Setting,3,
+114,Safety Training,3,
+115,Professional Accountability,3,
+116,Corps Development Training,3,
+117,Chainsaw Training Classroom,3,
+118,Chainsaw Training Experiential,3,
+119,Recruiter Training,3,
+120,POL Training,3,
+121,Support Ranger Training,3,
+122,VST Training,3,
+123,SLI Training,3,
+124,Media Rep Training,3,
+125,Project Debriefs,3,
+126,Supply Check-In,3,
+127,Supply Check-Out,3,
+128,Unit Meeting,3,UL2
+129,Unit Meeting,3,UL3
+130,Room Inspections ,4,AllUL
+131,Community Meeting,4,TL
+132,Unit Meeting,4,UL1
+133,Recruiter Training,4,
+134,POL Training,4,
+135,Support Ranger Training,4,
+136,VST Training,4,
+137,SLI Training,4,
+138,Media Rep Training,4,
+139,Project Briefings,4,
+140,Project Debriefs,4,
+141,Supply Check-In,4,
+142,Supply Check-Out,4,
+143,MBTI Training,4,
+144,Unit Meeting,4,UL2
+145,Unit Meeting,4,UL3
+146,Room Inspections ,5,AllUL
+147,Community Meeting,5,TL
+148,Unit Meeting,5,UL1
+149,Recruiter Training,5,
+150,POL Training,5,
+151,Support Ranger Training,5,
+152,VST Training,5,
+153,SLI Training,5,
+154,Media Rep Training,5,
+155,Project Briefings,5,
+156,Project Debriefs,5,
+157,Supply Check-In,5,
+158,Supply Check-Out,5,
+159,Being an Ally,5,
+160,Unit Meeting,5,UL2
+161,Unit Meeting,5,UL3
+162,Room Inspections ,6,AllUL
+163,Community Meeting,6,TL
+164,Unit Meeting,6,UL1
+165,Recruiter Training,6,
+166,POL Training,6,
+167,Support Ranger Training,6,
+168,VST Training,6,
+169,SLI Training,6,
+170,Media Rep Training,6,
+171,Project Briefings,6,
+172,Project Debriefs,6,
+173,Supply Check-In,6,
+174,Supply Check-Out,6,
+175,Unit Meeting,6,UL2
+176,Unit Meeting,6,UL3
+177,Room Inspections ,7,AllUL
+178,Community Meeting,7,TL
+179,Unit Meeting,7,UL1
+180,Recruiter Training,7,
+181,POL Training,7,
+182,Support Ranger Training,7,
+183,VST Training,7,
+184,SLI Training,7,
+185,Media Rep Training,7,
+186,Project Briefings,7,
+187,Project Debriefs,7,
+188,Supply Check-In,7,
+189,Supply Check-Out,7,
+190,All-Corps Photo,7,
+191,Resume Session,7,
+192,ASVAB Session,7,
+193,LAA Information Session,7,
+194,Out-Processing Information Session,7,
+195,Awards Dinner & Show,7,
+196,AmeriCorps Alums Presentation,7,
+197,College Credit Testing,7,
+198,End of Year Survey/Portal Closeout,7,
+199,Corps PT Baselines,7,
+200,Unit Meeting,7,UL2
+201,Unit Meeting,7,UL3
