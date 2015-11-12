@@ -37,77 +37,23 @@ class Team(db.Model):
     #                             order_by=team_id))
 
 
+
+
+
 # CS 101
-class Course(db.Model):
+class Training(db.Model):
 
-    __tablename__ = "courses"
+    __tablename__ = "trainings"
 
-    course_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    course_name = db.Column(db.String(64), nullable=False, default="unknown")
+    training_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    training_name = db.Column(db.String(64), nullable=False, default="unknown")
+    description = db.Column(db.String(140), nullable=True)
+    duration= db.Column(db.Integer, nullable=True)
 
     # staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), nullable=False, default="unknown")
     # training_period = db.Column(db.String(64), db.ForeignKey('training_period.type_id'), nullable=False, default="unknown")
 
 
-# Fall 2015 semester, CS 101  <-->  team_id
-class CourseAssignment(db.Model):
-
-    __tablename__ = "course_assignment"
-
-    assign_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
-                        nullable=False, default="unknown")
-    type_id = db.Column(db.String(10), nullable=False, ForeignKey(
-        "course_availability.trackcourse"))
-
-
-# Fall 2015 semester, CS 101
-# Course Availability by Training Period
-class CourseAvailabilty(db.Model):
-
-    __tablename__ = "course_availability"
-
-    trackcourse = db.Column(db.Integer, autoincrement=True, primary_key=True) 
-    availablecourses = db.Column(db.Integer, db.ForeignKey('courses.course_id'),
-                          nullable=True, default="unknown")
-    bytrainingcycle = db.Column(db.String(64),
-                      db.ForeignKey('training_period.type_id'), nullable=True)
-    staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), 
-                         nullable=False, default="unknown")
-    # team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
-                        # nullable=False, default="unknown")
-   
-
-# Course Options by datetime 
-# Fall 2015 semester, CS 101 -- each individual class
-# course.assignment txt file
-class CourseByDateTime(db.Model):
-
-    __tablename__ = "course_by_datetime"
-
-    timedate_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    trngperiod_courses = db.Column(db.Integer, db.ForeignKey("course_availability.trackcourse")nullable=False, default="unknown")
-    start_time = db.Column(db.DateTime, nullable=True)
-    end_time = db.Column(db.DateTime, nullable=True)
-    room_id = db.Column(db.Integer, ForeignKey("rooms.room_id"), nullable=False, default="unknown")
-
-
-# i.e TLT, CTI, 
-class TrainingPeriod(db.Model):
-
-    __tablename__ = "training_period"
-
-    type_id = db.Column(db.String(10), nullable=False, primary_key=True)
-    start_date = db.Column(db.DateTime, nullable=False)
-    end_date = db.Column(db.DateTime, nullable=False)
-    cycle = db.Column(db.String(35), nullable=False)
-    
-    def __init__(self, type_id, start_date, end_date, cycle):
-        self.type_id = type_id
-        self.start_date = start_date
-        self.end_date = end_date
-        self.cycle = cycle
-        
 
 
 class Staff(db.Model):
@@ -115,7 +61,7 @@ class Staff(db.Model):
     __tablename__ = "staff"
 
     staff_id = db.Column(db.String(15), primary_key=True)
-    role = db.Column(db.String(64), nullable=False)
+    staff_role = db.Column(db.String(64), nullable=False)
     firstname = db.Column(db.String(30), nullable=False)
     lastname = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(64), nullable=True)
@@ -131,6 +77,29 @@ class Staff(db.Model):
     #     return '<Staff %r>' % self.username
 
 
+
+# Fall 2015 semester, CS 101  <-->  team_id
+class TrainingAssignment(db.Model):
+
+    __tablename__ = "training_assignments"
+
+    assignment_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
+                        nullable=False, default="unknown")
+    training_id = db.Column(db.Integer, db.ForeignKey('trainings.training_id'), nullable=False, default="unknown")
+    staff_id = db.Column(db.String(15), db.ForeignKey('staff.staff_id'), nullable=True)
+    start_date = db.Column(db.DateTime, nullable=False)
+    end_date = db.Column(db.DateTime, nullable=True)
+    start_time = db.Column(db.DateTime, nullable=True)
+    end_time = db.Column(db.DateTime, nullable=True)
+    # trainingperiod_id = db.Column(db.String(10), db.ForeignKey(
+                        # 'training.availability.training_id'), nullable=False)
+
+    staff = db.relationship("staff", backref=db.backref("training_assignments"))
+
+
+
+
 class Building(db.Model):
 
     __tablename__ = "buildings"
@@ -139,6 +108,8 @@ class Building(db.Model):
     bldg_name = db.Column(db.String(30), nullable=False)
 
  
+
+
 
 class Room(db.Model):
 
@@ -151,13 +122,58 @@ class Room(db.Model):
     #                       nullable=True)
     bldg_id = db.Column(db.Integer, db.ForeignKey('buildings.bldg_id'), 
                         nullable=True)
-
-
-
     
 # user = db.relationship("User", backref=db.backref("ratings", order_by=rating_id))
 # movie = db.relationship("Movie", backref=db.backref("ratings", order_by=rating_id))
 
+
+
+# Fall 2015 semester, CS 101
+# # Course Availability by Training Period
+# class CourseAvailabilty(db.Model):
+
+#     __tablename__ = "course_availability"
+
+#     availability_id = db.Column(db.Integer, autoincrement=True, primary_key=True) 
+#     availablecourse = db.Column(db.Integer, db.ForeignKey('courses.course_id'),
+#                           nullable=True, default="unknown")
+#     bytrainingcycle = db.Column(db.String(64),
+#                       db.ForeignKey('training_period.trainingperiod_id'), nullable=True)
+#     staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), 
+#                          nullable=False, default="unknown")
+#     # team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
+#                         # nullable=False, default="unknown")
+   
+
+# # Course Options by datetime 
+# # Fall 2015 semester, CS 101 -- each individual class
+# # course.assignment txt file
+# class CourseByDateTime(db.Model):
+
+#     __tablename__ = "course_by_datetime"
+
+#     timedate_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+#     trngperiod_courses = db.Column(db.Integer, db.ForeignKey("course_availability.trackcourse"))
+#     start_time = db.Column(db.DateTime, nullable=True)
+#     end_time = db.Column(db.DateTime, nullable=True)
+#     room_id = db.Column(db.Integer, db.ForeignKey("rooms.room_id"), nullable=False, default="unknown")
+
+
+# # i.e TLT, CTI, 
+# class TrainingPeriod(db.Model):
+
+#     __tablename__ = "training_period"
+
+#     trainingperiod_id = db.Column(db.String(10), nullable=False, primary_key=True)
+#     start_date = db.Column(db.DateTime, nullable=False)
+#     end_date = db.Column(db.DateTime, nullable=False)
+#     cycle = db.Column(db.String(35), nullable=False)
+    
+#     def __init__(self, type_id, start_date, end_date, cycle):
+#         self.type_id = type_id
+#         self.start_date = start_date
+#         self.end_date = end_date
+#         self.cycle = cycle
 ##############################################################################
 # Helper functions
 
@@ -191,3 +207,9 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     print "Connected to DB."
+
+
+
+
+
+
