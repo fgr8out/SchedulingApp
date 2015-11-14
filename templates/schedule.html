@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  <h1>Scheduler</h1>
+  <h3>Scheduler</h3>
 
-  <title>Choose Training Period</title>
+<p><strong>Choose Training Period</strong></p>
 
-  <select>
-
+<select>
   <option value="Team Leader Training">TLT</option>
   <option value="In-Processing">In-Processing</option>
   <option value="Corps Training Institute">CTI</option>
@@ -14,75 +13,51 @@
   <option value="Mid-Year Training">Mid-Year</option>
   <option value="Round 3">Round 3</option>
   <option value="Closure">Closure</option>
-
 </select>
 
-  <title>Course</title>
+<p><em>For what date we scheduling?</em></p>
 
+<p>Pick a date here:</p>
+  <input type=date step=7 min=2016-03-06>
+  <input type=date step=7 max=2016-03-11>
+
+<p>Choose Team</p>
   <select>
+    {% for team in teams %}
+      <option value="{{team.team_name}}">{{team.team_name}}</option>
+    {% endfor %}
+  </select>
 
-  <option value="Community Meeting">Community Meeting</option>
-  <option value="Residence Hall Orientation">RH Orientation</option>
-  <option value="Supervisory Skills Trng">Supervisory Skills</option>
-  <option value=""></option>
-  <option value=""></option>
-  <option value=""></option>
-  <option value=""></option>
 
-</select>
-
-<option value="Staff ">Position</option>
-
+<p>Choose Training</p>
 <select>
-
-<title>Choose a Unit</title>
-  <option value="Cedar">Cedar</option>
-  <option value="Maple">Maple</option>
-  <option value="Oak">Oak</option>
-
+    {% for training in trainings %}
+      <option value="{{training.training_name}}">{{training.training_name}}
+      </option>
+    {% endfor %}
 </select>
 
-<title>Pick Date/Time</title>
-<form>
+ <p>Pick Trainer(s)</p>
+<select>
+    {% for staff in staff %}
+      <option value="{{staff.staff_id}}">{{staff.staff_role}}</option>
+    {% endfor %}
+</select>
 
-<!-- date should populate based on course availability -->
-  Enter a date between first day of training:
-  <input type="date" name="trngperiod" max="2016-17-02"><br>
-  
-  Enter a date after last day of training:
-  <input type="date" name="bday" min="2000-01-02"><br>
+<p>Start Time</p>
+<input type=time min=5:00 max=21:00 step=900>
+
+<p>End Time</p>
+<input type=time min=5:00 max=21:00 step=900>
+
+</p>
+<form action="submit" method="post">
+  <input type="submit" value="Submit Training">
 </form>
-
-
-  <title>Choose Team(s)</title>
-  <select>
-  <option value="Cedar 1">Cedar 1</option>
-  <option value="Cedar 2">Cedar 2</option>
-  <option value="Cedar 3">Cedar 3</option>
-  <option value="Cedar 4">Cedar 4</option>
-  <option value="Cedar 5">Cedar 5</option>
-  <option value="Cedar 6">Cedar 6</option>
-  <option value="Cedar 7">Cedar 7</option>
-</select>
-
-  <title>Staff POC</title>
-  <select>
-  <option value="Staff Name">Position</option>
-  <option value="Staff Name">Position</option>
-  <option value="Staff Name">Position</option>
-  <option value="Staff Name">Position</option>
-  <option value="Staff Name">Position</option>
-  <option value="Staff Name">Position</option>
-</select>
-
-
-
-
-
-  
-  <p><a href="/schedule">Page to schedule (is this a form?)</a></p>
+<p>
+  <p><a href="/schedule"></a></p>
 
   <h2>Dashboard View</h2>
-  <p><a href="/dashboard">Dashboard view</a></p>
+  <p><a href="/dashboard">Go to Dashboard View</a></p>
 
 {% endblock %}

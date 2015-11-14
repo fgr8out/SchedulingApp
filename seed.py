@@ -14,7 +14,7 @@ from model import TrainingAssignment
 
 from model import connect_to_db, db
 from server import app
-from datetime import datetime
+from datetime import datetime, time
 
 
 def load_Building():
@@ -49,7 +49,7 @@ def load_Training():
     Training.query.delete()
 
 
-    for row in open("seed_data/training"):
+    for row in open("seed_data/training.csv"):
         row = row.strip()
         items = row.split(",")
 
@@ -60,40 +60,49 @@ def load_Training():
 
         db.session.add(training)
 
-    db.session.commit()
+        db.session.commit()
 
 
 
+# def load_TrainingAssignment():
+#     """Association table to connect training assignment by team_id"""
 
-def load_TrainingAssignment():
-    """Association table to connect training assignment by team_id"""
+#     print "Training Assignment"
 
-    print "Training Assignment"
+#     TrainingAssignment.query.delete()
 
-    TrainingAssignment.query.delete()
+#     for row in open("seed_data/training.assignment.csv"):
+#         row = row.strip()
+#         items = row.split(",")
+#         print len(items)
+#         assignment_id = items[0]
+#         # team_id 
+#         training_id = items[1]
 
-    for row in open("seed_data/training.assignment.csv"):
-        row = row.strip()
-        items = row.split(",")
-        start_date = items[4]
-        end_date = items[5]
+#         start_date = items[2]
+#         end_date = items[3]
+#         start_time = items[4]
+#         end_time =  items[5]
 
-        start_date = datetime.strptime(start_date, '%b/%d/%Y')
-        end_date = datetime.strptime(end_date, '%b/%d/%Y')
+#         start_date = datetime.strptime(start_date, '%m/%d/%y')
+#         end_date = datetime.strptime(end_date, '%m/%d/%y')
 
-        trainingassignment = TrainingAssignment(assignment_id=items[0],
-                            team_id=items[1],
-                            training_id=items[2],
-                            staff_id=items[3],
-                            start_date=start_date,
-                            end_date=end_date,
-                            start_time=items[6],
-                            end_time=items[7])
+#         start_time = datetime.strptime(start_time, '%H:%M')
+#         end_time = datetime.strptime(end_time, '%H:%M')
+
+#         trainingassignment = TrainingAssignment(assignment_id=assignment_id,
+#                             # team_id=team_id,
+#                             training_id=training_id,
+#                             # staff_id=staff_id,
+#                             start_date=start_date,
+#                             end_date=end_date,
+#                             start_time=items,
+#                             end_time=items)
            
 
-        db.session.add(trainingassignment)
+#         db.session.add(trainingassignment)
 
-    db.session.commit()
+#     db.session.commit()
 
 
 
@@ -130,9 +139,9 @@ def load_Staff():
         items = row.split(",")
 
         staff = Staff(staff_id=items[0],
-                        role=items[1],
-                        firstname=items[2],
-                        lastname=items[3])
+                staff_role=items[1],
+                firstname=items[2],
+                lastname=items[3])
 
         db.session.add(staff)
 
@@ -162,18 +171,17 @@ def load_Team():
 
 
 def load_Unit():
-    """Load units from unit.csv into database."""
+    """Load units from units into database."""
 
     print "units"
     
     Unit.query.delete()
 
-    for row in open("seed_data/unit"):
+    for row in open("seed_data/units"):
         row = row.strip()
         items = row.split(",")
 
-        unit = Unit(unit_id=items[0],
-                    unit_name=items[1])
+        unit = Unit(unit_name=items[0])
                     
 
         db.session.add(unit)
@@ -188,9 +196,9 @@ if __name__ == "__main__":
     db.create_all()
 
     # Import different types of data
-    load_Buildings()
+    load_Building()
     load_Training()
-    load_TrainingAssignment()
+    # load_TrainingAssignment()
     load_Room()
     load_Staff()
     load_Team()

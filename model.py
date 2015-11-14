@@ -17,7 +17,7 @@ class Unit(db.Model):
 
     __tablename__ = "units"
 
-    unit_id = db.Column(db.String, primary_key=True)
+    unit_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     unit_name = db.Column(db.String(10), nullable=False)
     
     team = db.relationship("Team", backref=db.backref("units", order_by=unit_id))
@@ -38,8 +38,6 @@ class Team(db.Model):
 
 
 
-
-
 # CS 101
 class Training(db.Model):
 
@@ -47,8 +45,8 @@ class Training(db.Model):
 
     training_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     training_name = db.Column(db.String(64), nullable=False, default="unknown")
-    description = db.Column(db.String(140), nullable=True)
-    duration= db.Column(db.Integer, nullable=True)
+    description = db.Column(db.String(140), nullable=True, default="unknown")
+    duration= db.Column(db.Integer, nullable=True, default="unknown")
 
     # staff_id = db.Column(db.Integer, db.ForeignKey('staff.staff_id'), nullable=False, default="unknown")
     # training_period = db.Column(db.String(64), db.ForeignKey('training_period.type_id'), nullable=False, default="unknown")
@@ -87,7 +85,7 @@ class TrainingAssignment(db.Model):
     team_id = db.Column(db.Integer, db.ForeignKey('teams.team_id'), 
                         nullable=False, default="unknown")
     training_id = db.Column(db.Integer, db.ForeignKey('trainings.training_id'), nullable=False, default="unknown")
-    staff_id = db.Column(db.String(15), db.ForeignKey('staff.staff_id'), nullable=True)
+    staff_id = db.Column(db.String(15), db.ForeignKey('staff.staff_id'), nullable=True, default="unknown")
     start_date = db.Column(db.DateTime, nullable=False)
     end_date = db.Column(db.DateTime, nullable=True)
     start_time = db.Column(db.DateTime, nullable=True)
@@ -95,7 +93,7 @@ class TrainingAssignment(db.Model):
     # trainingperiod_id = db.Column(db.String(10), db.ForeignKey(
                         # 'training.availability.training_id'), nullable=False)
 
-    staff = db.relationship("staff", backref=db.backref("training_assignments"))
+    staff = db.relationship("Staff", backref=db.backref("training_assignments"))
 
 
 

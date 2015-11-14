@@ -32,8 +32,17 @@ def splash_login():
 def choose_schedule():
     """Homepage."""
 
+    teams = Team.query.all()
+    units = Unit.query.all()
+    staff = Staff.query.all()
+    trainings = Training.query.all()
 
-    return render_template("schedule.html")
+
+
+
+    return render_template("schedule.html", teams=teams, trainings=trainings, 
+                                            units=units, staff=staff)
+
 
 # needs a post method @ some point
 @app.route('/dashboard')

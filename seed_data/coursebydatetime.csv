@@ -1,63 +1,125 @@
-date_ID,course_ID,course_name,start_time,end_time,duration,location,staff_id
-1/6/16,1,Team Leader Arrival Day,9:00:00 AM,3:00:00 PM,6h ,,AllUL
-1/6/16,2,Residence Hall Check-in,9:00:00 AM,4:40:00 PM,6h40m,SB,"RC,SSS"
-1/6/16,3,Member Support Office Check-In,9:00:00 AM,5:00:00 PM,7h,"PH,26",MSS
-1/6/16,4,Unit Welcome,5:05:00 PM,5:30:00 PM,25min,"PH,100",AllUL
-1/6/16,5,Residence Hall Orientation,6:30:00 PM,8:00:00 PM,1h30m,"PH,100","RC,SSS"
-1/7/16,6,Breakfast,6:25:00 AM,6:50:00 AM,25min,"PH,116",
-1/7/16,7,Orientation to Drug & TB Test,8:15:00 AM,8:40:00 AM,25min,"MB,1","RM,CNLR"
-1/8/16,8,"Drug, TB Tests & Tetnus Shots",7:15:00 AM,8:00:00 AM,45min,OUT,CNLR
-1/7/16,9,Welcome by Management Team,8:40:00 AM,8:55:00 AM,15min,"MB,1",RD
-1/7/16,10,In-Processing,9:00:00 AM,10:10:00 AM,1h10m,"PH,100",MSS
-1/7/16,11,"Copier, Mail, Fax",10:15:00 AM,10:35:00 AM,20min,"PH,100",PA
-1/7/16,12,Kitchen Inspection Training,10:45:00 AM,11:45:00 AM,1h,"RH,9",RC 
-1/7/16,13,Orientation to TLT,12:40:00 PM,3:00:00 PM,2h20m,"RH,9",APDT
-,14,Introduction to Units,3:05:00 PM,4:05:00 PM,1h,"RH,15",AllUL
-,15,Clicker Orientation,,,,,
-,16,Program Policies Part I,,,,,
-,17,Program Policies Part II,,,,,
-,18,Program Policies Part III,,,,,
-,19,Program Policies Part IV,,,,,
-,20,Government Vehicles Classroom Part 1,,,,,
-,21,Lunch,,,,,
-,22,Team Building,,,,,
-,23,Unit Development,,,,,
-,24,Exploring the Community,,,,,
-1/30/16,25,Dinner,,,,,
-1/31/16,26,Unit Reveal,,,,,
-2/1/16,27,Government Vehicles Hands-On Training,,,,,
-2/2/16,28,Intro to MBTI,,,,,
-2/3/16,29,TLT Check-In,,,,,
-2/4/16,30,Road Tests,,,,,
-2/5/16,31,Baselines,,,,,
-2/6/16,32,Overview of PT,,,,,
-2/7/16,33,Roles of the TL,,,,,
-2/8/16,34,Tool Kit Training Part 1,,,,,
-2/9/16,35,Tool Kit Training Part 2,,,,,
-2/10/16,36,Supervisory Skills Training,,,,,
-2/11/16,37,Member Management Part I,,,,,
-2/12/16,38,Forms Training,,,,,
-2/13/16,39,Project Completion Report Training,,,,,
-2/14/16,40,Project Handoff and Briefing Process,,,,,
-2/15/16,41,Member Management Part II,,,,,
-2/16/16,42,Member Management Part III,,,,,
-2/17/16,43,Member Management Part IV,,,,,
-,44,Member Management Part V,,,,,
-,45,Corps Support Scenarios,,,,,
-,46,Financial Management Training Part I,,,,,
-,47,Financial Management Training Part II,,,,,
-,48,Hands of Peace Experiential,,,,,
-,49,Unit Procedure during CTI,,,,,
-,50,The Amazing Race,,,,,
-,51,TLT Debrief,,,,,
-,52,Prepare for CM Arrival Day,,,,,
-,53,CTI Discussion Round Table,,,,,
-,54,Portfolio Training,,,,,
-,55,Project Process & Training Overview,,,,,
-,56,Room Inspections ,,,,,
-,57,Community Meeting,,,,,
-,58,Unit Meeting,,,,,
-,59,Government Vehicles Hands-On Training,,,,,
-,60,Government Vehicles Hands-On Training,,,,,
-,61,Unit Meeting,,,,,
-,62,Unit Meeting,,,,,
+assignment_id,team_id,training_id,staff_id,date_ID,end_date,course_ID,trng_pd,course_name,start_time,end_time,duration,staff_id
+,,,,1/7/16,,1,1,Breakfast,6:25:00 AM,6:50:00 AM,25min,
+,,,,2/10/16,,74,2,All Corps Muster,7:05:00 AM,7:20:00 AM,15min,TL
+,,,,2/9/16,,2,2,Breakfast,6:45:00 AM,7:40:00 AM,55min,
+,,,,1/8/16,,4,1,"Drug, TB Tests & Tetnus Shots",7:15:00 AM,8:00:00 AM,45min,CNLR
+,,,,2/15/16,,57,1,Community Meeting,8:00:00 AM,8:30:00 AM,30min,POSTL
+,,,,1/7/16,,6,1,Orientation to Drug & TB Test,8:15:00 AM,8:40:00 AM,25min,"RM,CNLR"
+,,,,1/7/16,,7,1,Welcome by Management Team,8:40:00 AM,8:55:00 AM,15min,RD
+,,,,2/11/16,,76,2,Web Portal Training,8:00:00 AM,9:00:00 AM,1h,MSS
+,,,,3/7/16,,58,3,Unit Meeting,8:00:00 AM,9:15:00 AM,1h15m,UL2
+,,,,1/7/16,,10,1,In-Processing,9:00:00 AM,10:10:00 AM,1h10m,MSS
+,,,,2/11/16,,77,2,CNCS Training,9:10:00 AM,10:25:00 AM,1h15m,CRS
+,,,,1/7/16,,12,1,"Copier, Mail, Fax",10:15:00 AM,10:35:00 AM,20min,PA
+,,,,2/10/16,,71,2,Residence Hall Orientation,9:45:00 AM,11:00:00 AM,1h15m,RC
+,,,,2/1/16,,14,1,Program Policies Part IV,10:15:00 AM,11:15:00 AM,1h,AllUL
+,,,,2/15/16,,53,1,CTI Discussion Round Table,11:00:00 AM,11:20:00 AM,20min,RD
+,,,,1/9/16,,16,1,Team Building,8:00:00 AM,11:30:00 AM,3h30m,AllUL
+,,,,1/8/16,,17,1,Government Vehicles Classroom Part 1,9:20:00 AM,11:35:00 AM,2h15m,FM
+,,,,1/8/16,,59,1,Government Vehicles Hands-On Training,9:20:00 AM,11:35:00 AM,2h15m,SSS
+,,,,1/7/16,,19,1,Kitchen Inspection Training,10:45:00 AM,11:45:00 AM,1h,RC 
+,,,,2/10/16,,72,2,Rep Role Information Session,11:10:00 AM,11:55:00 AM,45min,AllStaff
+,,,,2/15/16,,51,1,TLT Debrief,11:25:00 AM,11:55:00 AM,30min,APDT
+,,,,2/8/16,,54,1,Portfolio Training,11:25:00 AM,12:25:00 PM,1h,AllUL
+,,,,1/7/16,,23,1,Lunch,11:50:00 AM,12:30:00 PM,40min,
+,,,,2/15/16,,81,3,Ropes Course,8:30:00 AM,12:30:00 PM,4h00m,
+,,,,1/9/16,,25,1,Unit Development,11:40:00 AM,12:40:00 PM,1h,AllUL
+,,,,1/14/16,,26,1,Program Policies Part II,12:30:00 PM,1:30:00 PM,1h,AllUL
+,,,,2/10/16,,79,2,ISP Training,1:00:00 PM,2:00:00 PM,1h00m,AllUL
+,,,,1/7/16,,28,1,Orientation to TLT,12:40:00 PM,3:00:00 PM,2h20m,APDT
+,,,,1/6/16,,29,1,Team Leader Arrival Day,9:00:00 AM,3:00:00 PM,6h ,AllUL
+,,,,1/21/16,,55,1,Project Process & Training Overview,12:50:00 PM,3:50:00 PM,3h00m,DRDP
+,,,,1/7/16,,31,1,Introduction to Units,3:05:00 PM,4:05:00 PM,1h,AllUL
+,,,,2/10/16,,80,2,Residence Hall Processes & Procedures,3:20:00 PM,4:20:00 PM,1h00m,RC
+,,,,1/8/16,,33,1,Program Policies Part I,3:25:00 PM,4:25:00 PM,1h,AllUL
+,,,,1/9/16,,34,1,Exploring the Community,1:30:00 PM,4:30:00 PM,3h00m,AllUL
+,,,,1/22/16,,35,1,Program Policies Part III,3:35:00 PM,4:35:00 PM,1h,AllUL
+,,,,1/7/16,,36,1,Clicker Orientation,4:15:00 PM,4:40:00 PM,25min,TS
+,,,,1/6/16,,37,1,Residence Hall Check-in,9:00:00 AM,4:40:00 PM,6h40m,"RC,SSS"
+,,,,1/6/16,,38,1,Member Support Office Check-In,9:00:00 AM,5:00:00 PM,7h,MSS
+,,,,2/15/16,,52,1,Prepare for CM Arrival Day,2:00:00 PM,5:00:00 PM,3h00m,DRDO
+,,,,2/11/16,,78,2,Ethics and EEO Training,3:45:00 PM,5:15:00 PM,1h30m,OUT
+,,,,1/6/16,,41,1,Unit Welcome,5:05:00 PM,5:30:00 PM,25min,AllUL
+,,,,2/12/15,,75,2,Orientation to CCC Presentation,5:30:00 PM,5:50:00 PM,20min,DRDO
+,,,,2/9/16,,65,2,Dinner,5:45:00 PM,6:40:00 PM,55min,
+,,,,2/9/16,,69,2,Corps Member Arrival Day,9:00:00 AM,7:00:00 PM,10h00m,AllStaff
+,,,,1/6/16,,45,1,Residence Hall Orientation,6:30:00 PM,8:00:00 PM,1h30m,"RC,SSS"
+,,,,2/9/16,,70,2,Corps Welcome,7:30:00 PM,8:30:00 PM,1h00m,AllStaff
+,,,,,,57,2,Community Meeting,,,,STL
+,,,,,,82,3,Corps Development Training,,,,
+,,,,,,82,3,Corps Development Training,,,,
+,,,,,,82,3,Corps Development Training,,,,
+,,,,,,82,3,Corps Development Training,,,,
+,,,,,,82,3,Corps Development Training,,,,
+,,,,,,82,3,Corps Development Training,,,,
+,,,,,,82,3,Corps Development Training,,,,
+,,,,,,82,3,Corps Development Training,,,,
+,,,,2/13/16,,64,2,Exploring the Community,,,,APDT
+,,,,2/9/16,,73,2,Floor Meetings,8:45:00 PM,,,AllUL
+,,,,,,,2,Floor Meetings,,,,
+,,,,,,79,3,ISP Training,,,,
+,,,,,,79,3,ISP Training,,,,
+,,,,,,79,3,ISP Training,,,,
+,,,,,,79,3,ISP Training,,,,
+,,,,,,79,3,ISP Training,,,,
+,,,,,,66,3,Portfolio Training,,,,AllUL
+,,,,,,67,3,Project Process & Training Overview,,,,DRDP
+,,,,2/15/16,,81,3,Ropes Course,,,,
+,,,,,,81,3,Ropes Course,,,,
+,,,,,,81,3,Ropes Course,,,,
+,,,,,,81,3,Ropes Course,,,,
+,,,,,,81,3,Ropes Course,,,,
+,,,,,,81,3,Ropes Course,,,,
+,,,,,,81,3,Ropes Course,,,,
+,,,,,,81,3,Ropes Course,,,,
+,,,,,,58,3,Unit Meeting,,,,UL1
+,,,,3/7/16,,58,3,Unit Meeting,,,,UL3
+,,,,,,76,3,Project Debrief,,,,
+,,,,,,76,3,Project Debrief,,,,
+,,,,,,76,3,Project Debrief,,,,
+,,,,,,76,3,Project Debrief,,,,
+,,,,,,76,3,Project Debrief,,,,
+,,,,,,76,3,Project Debrief,,,,
+,,,,,,76,3,Project Debrief,,,,
+,,,,,,76,4,Project Debrief,,,,
+,,,,,,76,4,Project Debrief,,,,
+,,,,,,76,4,Project Debrief,,,,
+,,,,,,76,4,Project Debrief,,,,
+,,,,,,76,4,Project Debrief,,,,
+,,,,,,76,4,Project Debrief,,,,
+,,,,,,76,4,Project Debrief,,,,
+,,,,,,76,5,Project Debrief,,,,
+,,,,,,76,5,Project Debrief,,,,
+,,,,,,76,5,Project Debrief,,,,
+,,,,,,76,5,Project Debrief,,,,
+,,,,,,76,5,Project Debrief,,,,
+,,,,,,76,5,Project Debrief,,,,
+,,,,,,76,5,Project Debrief,,,,
+,,,,,,76,,Project Debrief,,,,
+,,,,,,76,,Project Debrief,,,,
+,,,,,,76,,Project Debrief,,,,
+,,,,,,76,,Project Debrief,,,,
+,,,,,,76,,Project Debrief,,,,
+,,,,,,76,,Project Debrief,,,,
+,,,,,,76,,Project Debrief,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
+,,,,,,77,,Project Briefing,,,,
