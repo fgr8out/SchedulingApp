@@ -3,23 +3,25 @@
 <head>
     <title>Main Page</title>
 <!-- Bootstrap -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+   
+<link rel="stylesheet" href="/static/dashboard.css">
 </head>
 <body>
 
-
-{% if "user_id" in session %}
-    <a href="/logout">Logout</a>
-{% else %}
-    <a href="/login">Login</a>
-{% endif %}
 
 <hr>
 
 {% for flash in get_flashed_messages() %}
   {{ flash }}
 {% endfor %}
+
+        {% for flash in get_flashed_messages() %}
+          <div id="flash" class="alert alert-info" role="alert">
+          {{ flash }}
+          </div>
+        {% endfor %}
 
 {% block content %}
     Put your body here.

@@ -1,12 +1,33 @@
 {% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
 {% block content %}
+<div class="col-xs-0 col-sm-3"></div>
+<div class="col-xs-12 col-sm-6">
+    <div class="content main centered">
+        <h3>Login</h3>
+        <form action="/login" method="POST" id="login-form">
+            <label class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="email">
+            </label>
+            <br>
+            <label class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password">
+            </label>
+            <br>
+            <label class="form-group" id="login-submission">
+                <input class="form-control" type="submit" value="enter">
+            </label>
+        </form>
+    </div>
+</div>
+<div class="col-xs-0 col-sm-3"></div>
 
-  <h1>Log in here</h1>
 
-  <h2>This will be a link to the awesome schedule that you'll make</h2>
+<h3>View Schedule<h3>
   <p><a href="/schedule">Page to schedule (is this a form?)</a></p>
 
-  <h2>Dashboard View</h2>
-  <p><a href="/dashboard">Dashboard view</a></p>
-  
+<h2>Dashboard View</h2>
+  <p><a href="/dashboard">Dashboard view</a></p>  
 {% endblock %}

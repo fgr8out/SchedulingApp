@@ -4,25 +4,25 @@
   <h3>Scheduler</h3>
 
 <p><strong>Choose Training Period</strong></p>
-
-<select>
-  <option value="Team Leader Training">TLT</option>
-  <option value="In-Processing">In-Processing</option>
-  <option value="Corps Training Institute">CTI</option>
-  <option value="Round 1">Round 1</option>
-  <option value="Mid-Year Training">Mid-Year</option>
-  <option value="Round 3">Round 3</option>
-  <option value="Closure">Closure</option>
+<form action="/submit_schedule" method="post">
+  <select>
+    <option value="Team Leader Training">TLT</option>
+    <option value="In-Processing">In-Processing</option>
+    <option value="Corps Training Institute">CTI</option>
+    <option value="Round 1">Round 1</option>
+<option value="Mid-Year Training">Mid-Year</option>
+<option value="Round 3">Round 3</option>
+<option value="Closure">Closure</option>
 </select>
 
 <p><em>For what date we scheduling?</em></p>
 
 <p>Pick a date here:</p>
-  <input type=date step=7 min=2016-03-06>
-  <input type=date step=7 max=2016-03-11>
+  <input name="start_date" type=date step=7 min=2016-03-06>
+  <input name="end_date" type=date step=7 max=2016-03-11>
 
 <p>Choose Team</p>
-  <select>
+  <select name = "team_name">
     {% for team in teams %}
       <option value="{{team.team_name}}">{{team.team_name}}</option>
     {% endfor %}
@@ -30,7 +30,7 @@
 
 
 <p>Choose Training</p>
-<select>
+<select name="training_name">
     {% for training in trainings %}
       <option value="{{training.training_name}}">{{training.training_name}}
       </option>
@@ -38,21 +38,21 @@
 </select>
 
  <p>Pick Trainer(s)</p>
-<select>
+<select name="staff_id">
     {% for staff in staff %}
       <option value="{{staff.staff_id}}">{{staff.staff_role}}</option>
     {% endfor %}
 </select>
 
 <p>Start Time</p>
-<input type=time min=5:00 max=21:00 step=900>
+<input name= "start_time"type=time min=5:00 max=21:00 step=900>
 
 <p>End Time</p>
-<input type=time min=5:00 max=21:00 step=900>
+<input name="end_time"type=time min=5:00 max=21:00 step=900>
 
 </p>
-<form action="submit" method="post">
-  <input type="submit" value="Submit Training">
+
+  <input type="submit" value="Save Schedule">
 </form>
 <p>
   <p><a href="/schedule"></a></p>
