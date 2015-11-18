@@ -7,7 +7,6 @@ from model import Staff
 from model import Team
 from model import Unit
 from model import TrainingAssignment
-
 # from model import TrainingByDatetime
 # from model import TrainingPeriod
 # from model import TrainingAvailability
@@ -29,10 +28,10 @@ def load_Building():
     # Read building file and insert data
     for row in open("seed_data/building"):
         row = row.rstrip()
-        bldg_id , bldg_name = row.split(",")
+        bldg_id, bldg_name = row.split(",")
 
         building = Building(bldg_id=bldg_id,
-                    bldg_name=bldg_name)
+                            bldg_name=bldg_name)
 
         # We need to add to the session or it won't ever be stored
         db.session.add(building)
@@ -48,7 +47,6 @@ def load_Training():
 
     Training.query.delete()
 
-
     for row in open("seed_data/training.csv"):
         row = row.strip()
         items = row.split(",")
@@ -61,7 +59,6 @@ def load_Training():
         db.session.add(training)
 
         db.session.commit()
-
 
 
 # def load_TrainingAssignment():
@@ -98,7 +95,7 @@ def load_Training():
 #                             end_date=end_date,
 #                             start_time=items,
 #                             end_time=items)
-           
+
 
 #         db.session.add(trainingassignment)
 
@@ -110,7 +107,7 @@ def load_Room():
     """Load room numbers from room.csv into database."""
 
     print "rooms"
-    
+
     Room.query.delete()
 
     for row in open("seed_data/room"):
@@ -125,13 +122,11 @@ def load_Room():
     db.session.commit()
 
 
-
-
 def load_Staff():
     """Load staff information from staff.csv into database."""
 
     print "staff"
-    
+
     Staff.query.delete()
 
     for row in open("seed_data/staff"):
@@ -139,9 +134,9 @@ def load_Staff():
         items = row.split(",")
 
         staff = Staff(staff_id=items[0],
-                staff_role=items[1],
-                firstname=items[2],
-                lastname=items[3])
+                      staff_role=items[1],
+                      firstname=items[2],
+                      lastname=items[3])
 
         db.session.add(staff)
 
@@ -152,7 +147,7 @@ def load_Team():
     """Load teams info from team.csv into database."""
 
     print "teams"
-    
+
     Team.query.delete()
 
     for row in open("seed_data/team"):
@@ -168,13 +163,11 @@ def load_Team():
     db.session.commit()
 
 
-
-
 def load_Unit():
     """Load units from units into database."""
 
     print "units"
-    
+
     Unit.query.delete()
 
     for row in open("seed_data/units"):
@@ -182,12 +175,11 @@ def load_Unit():
         items = row.split(",")
 
         unit = Unit(unit_name=items[0])
-                    
 
         db.session.add(unit)
 
         db.session.commit()
-    
+
 
 if __name__ == "__main__":
     connect_to_db(app)
@@ -214,7 +206,7 @@ if __name__ == "__main__":
 #     """Assocation table to connect course availability by training period"""
 
 #     print "Training Availability"
-    
+
 #     CourseAvailability.query.delete()
 
 #     for row in open("seed_data/course.availability"):
@@ -232,7 +224,7 @@ if __name__ == "__main__":
 #     """Load training periods from trainingperiod.csv into database."""
 
 #     print "training period"
-    
+
 #     TrainingPeriod.query.delete()
 
 #     for row in open("seed_data/trainingperiod"):
@@ -248,11 +240,8 @@ if __name__ == "__main__":
 #                         start_date=start_date,
 #                         end_date=end_date,
 #                         cycle=items[3])
-       
+
 
 #         db.session.add(trainingperiod)
 
 #     db.session.commit()
-
-
-

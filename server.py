@@ -14,10 +14,10 @@ app.secret_key = "ABC"
 # This is horrible. Fix this so that, instead, it raises an error.
 app.jinja_env.undefined = StrictUndefined
 
+
 @app.route('/')
 def splash_login():
     """Login Page"""
-
 
     return render_template("login.html")
 
@@ -31,19 +31,19 @@ def choose_schedule():
     staff = Staff.query.all()
     trainings = Training.query.all()
 
+    return render_template("schedule.html", teams=teams, trainings=trainings,
+                           units=units, staff=staff)
 
-    return render_template("schedule.html", teams=teams, trainings=trainings, 
-                                            units=units, staff=staff)
 
 @app.route('/submit_schedule', methods=['POST'])
 def submit_schedule():
     "Submit/Post webform to db"
-    
 
     team = request.form['team_name']
     print team
     training = request.form['training_name']
     print training
+    staff_id = request.form['staff_id']
     start_date = request.form['start_date']
     start_date = datetime.strptime(start_date, '%Y-%m-%d')
     print type(start_date)
@@ -57,36 +57,34 @@ def submit_schedule():
     end_time = datetime.strptime(end_time, '%H:%M')
     print type(end_time)
 
-        
-
-        
-        
-    #Creates new user in DB
+    # Creates new user in DB
     new_training = TrainingAssignment(
-                                 team_id=team,
-                                 training_id=training,
-                                 start_date=start_date,
-                                 end_date=end_date,
-                                 start_time=start_time,
-                                 end_time=end_time)
+        team_id=team,
+        training_id=training,
+        staff_id=staff_id,
+        start_date=start_date,
+        end_date=end_date,
+        start_time=start_time,
+        end_time=end_time)
 
     db.session.add(new_training)
     db.session.commit()
-
 
     flash("Schedule Request has been created for {}".format(team))
 
     return redirect("/schedule.html")
 
 
-
 @app.route('/dashboard')
 def process_request():
     """Show result of schedule choices on dashboard."""
+    all_assignments = TrainingAssignment.query.all()
+    print all_assignments
+    for assignment in all_assignments:
+        print assignment.team_id
 
 
-    return render_template("dashboard.html")
-
+    return render_template("dashboard.html", assignments=all_assignments)
 
 
 # @app.route("/login", methods=['GET'])
@@ -103,7 +101,7 @@ def process_request():
 
 #     email = request.form.get("email")
 #     password = request.form.get("password")
-    
+
 #     user = User.authenticate(email, password)
 
 #     if user:
@@ -123,7 +121,7 @@ def process_request():
 #     # Get form variables
 #     email = request.form["email"]
 #     password = request.form["password"]
-   
+
 
 #     new_user = User(email=email, password=password)
 
@@ -303,7 +301,7 @@ def process_request():
 #     else:
 #         dt = datetime.strftime(dt, '%Y-%m-%dT%H:%M:%SZ')
 
-    # return dt
+# return dt
 ###############################################################################
 
 if __name__ == "__main__":
