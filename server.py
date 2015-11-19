@@ -4,16 +4,19 @@ from datetime import datetime, timedelta
 from jinja2 import StrictUndefined
 from model import connect_to_db, db
 from model import *
-
+import os
+from secrets import TW_ACCOUNT_SID, TW_AUTH_TOKEN, TWILIO_NUMBER
 app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
-app.secret_key = "ABC"
+app.secret_key = "\xf0\x89\r\xbd/m\x9f<\xfd\xab8\xf00\xf8\x07t\x02\xec9\xd1\xa5&`B"
 
 # Normally, if you use an undefined variable in Jinja2, it fails silently.
 # This is horrible. Fix this so that, instead, it raises an error.
 app.jinja_env.undefined = StrictUndefined
 
+
+print TW_ACCOUNT_SID, TW_AUTH_TOKEN, TWILIO_NUMBER
 
 @app.route('/')
 def splash_login():
@@ -40,22 +43,22 @@ def submit_schedule():
     "Submit/Post webform to db"
 
     team = request.form['team_name']
-    print team
+    print "team: ", team
     training = request.form['training_name']
-    print training
+    print "training: ", training
     staff_id = request.form['staff_id']
     start_date = request.form['start_date']
     start_date = datetime.strptime(start_date, '%Y-%m-%d')
-    print type(start_date)
-    end_date = request.form['end_date']
-    end_date = datetime.strptime(end_date, '%Y-%m-%d')
-    print type(end_date)
+    print "type: ", type(start_date)
+    print "start_date: ", start_date
     start_time = request.form['start_time']
     start_time = datetime.strptime(start_time, '%H:%M')
-    print type(start_time)
+    print "type: ", type(start_time)
+    print "start_time: ", start_time
     end_time = request.form['end_time']
     end_time = datetime.strptime(end_time, '%H:%M')
-    print type(end_time)
+    print "type: ", type(end_time)
+    print "end_time: ", end_time
 
     # Creates new user in DB
     new_training = TrainingAssignment(
@@ -63,15 +66,19 @@ def submit_schedule():
         training_id=training,
         staff_id=staff_id,
         start_date=start_date,
-        end_date=end_date,
         start_time=start_time,
         end_time=end_time)
 
     db.session.add(new_training)
     db.session.commit()
 
-    flash("Schedule Request has been created for {}".format(team))
+    staff_poc = Staff.query.filter_by(staff_id=staff_id).first()    
+    print staff_poc
 
+    poc_phone = staff_poc.work_phone
+    print poc_phone
+
+    flash("Schedule Request has been created for {}".format(team))
     return redirect("/schedule.html")
 
 
@@ -85,6 +92,9 @@ def process_request():
 
 
     return render_template("dashboard.html", assignments=all_assignments)
+
+
+
 
 
 # @app.route("/login", methods=['GET'])

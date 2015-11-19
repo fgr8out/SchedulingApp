@@ -7,10 +7,9 @@ from model import Staff
 from model import Team
 from model import Unit
 from model import TrainingAssignment
-# from model import TrainingByDatetime
 # from model import TrainingPeriod
 # from model import TrainingAvailability
-
+# from model import TrainingByDatetime
 from model import connect_to_db, db
 from server import app
 from datetime import datetime, time
@@ -135,8 +134,12 @@ def load_Staff():
 
         staff = Staff(staff_id=items[0],
                       staff_role=items[1],
-                      firstname=items[2],
-                      lastname=items[3])
+                      fname=items[2],
+                      lname=items[3],
+                      email=items[],
+                      username=items[],
+                      password=items[],
+                      work_phone=items[])
 
         db.session.add(staff)
 
@@ -190,7 +193,6 @@ if __name__ == "__main__":
     # Import different types of data
     load_Building()
     load_Training()
-    # load_TrainingAssignment()
     load_Room()
     load_Staff()
     load_Team()
@@ -198,7 +200,7 @@ if __name__ == "__main__":
 
 # load_TrainingPeriod()
 # load_TrainingAvailability()
-
+ # load_TrainingAssignment()
 ################################################################################
 # Functions to be used at a later date
 

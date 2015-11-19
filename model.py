@@ -1,6 +1,8 @@
 """Models and database functions for Scheduling App."""
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from os import environ
+from twilio.rest import TwilioRestClient
 
 # This is the connection to the SQLite database; we're getting this through
 # the Flask-SQLAlchemy helper library. On this, we can find the `session`
@@ -52,20 +54,20 @@ class Staff(db.Model):
 
     staff_id = db.Column(db.String(15), primary_key=True)
     staff_role = db.Column(db.String(64), nullable=False)
-    firstname = db.Column(db.String(30), nullable=False)
-    lastname = db.Column(db.String(30), nullable=False)
+    fname = db.Column(db.String(30), nullable=False)
+    lname = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(64), nullable=True)
     username = db.Column(db.String(30), nullable=True)
     password = db.Column(db.String(30), nullable=True)
-    # phone = db.Column(db.String(15), nullable=True)
+    work_phone = db.Column(db.String(30), nullable=True)
 
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
+    # def __init__(self, username, email):
+    #     self.username = username
+    #     self.email = email
 
-    def __repr__(self):
+    # def __repr__(self):
 
-        return '<Staff %r>' % self.username
+    #     return '<Staff %r>' % self.username
 
 
 # Fall 2015 semester, CS 101  <-->  team_id
@@ -105,6 +107,22 @@ class Room(db.Model):
     bldg_id = db.Column(db.Integer, db.ForeignKey('buildings.bldg_id'),
                         nullable=True)
 
+# # i.e TLT, CTI, 
+# class TrainingPeriod(db.Model):
+
+#     __tablename__ = "training_period"
+
+#     trainingperiod_id = db.Column(db.String(10), nullable=False, primary_key=True)
+#     start_date = db.Column(db.DateTime, nullable=False)
+#     end_date = db.Column(db.DateTime, nullable=False)
+#     cycle = db.Column(db.String(35), nullable=False)
+
+#     def __init__(self, type_id, start_date, end_date, cycle):
+#         self.type_id = type_id
+#         self.start_date = start_date
+#         self.end_date = end_date
+#         self.cycle = cycle
+
 
 # user = db.relationship("User", backref=db.backref("ratings", order_by=rating_id))
 # movie = db.relationship("Movie", backref=db.backref("ratings", order_by=rating_id))
@@ -129,8 +147,8 @@ class Room(db.Model):
 
 
 # # Course Options by datetime 
-# # Fall 2015 semester, CS 101 -- each individual class
-# # course.assignment txt file
+# Fall 2015 semester, CS 101 -- each individual class
+# course.assignment txt file
 # class CourseByDateTime(db.Model):
 
 #     __tablename__ = "course_by_datetime"
@@ -140,23 +158,6 @@ class Room(db.Model):
 #     start_time = db.Column(db.DateTime, nullable=True)
 #     end_time = db.Column(db.DateTime, nullable=True)
 #     room_id = db.Column(db.Integer, db.ForeignKey("rooms.room_id"), nullable=False, default="unknown")
-
-
-# # i.e TLT, CTI, 
-# class TrainingPeriod(db.Model):
-
-#     __tablename__ = "training_period"
-
-#     trainingperiod_id = db.Column(db.String(10), nullable=False, primary_key=True)
-#     start_date = db.Column(db.DateTime, nullable=False)
-#     end_date = db.Column(db.DateTime, nullable=False)
-#     cycle = db.Column(db.String(35), nullable=False)
-
-#     def __init__(self, type_id, start_date, end_date, cycle):
-#         self.type_id = type_id
-#         self.start_date = start_date
-#         self.end_date = end_date
-#         self.cycle = cycle
 ##############################################################################
 # Helper functions
 
@@ -190,4 +191,4 @@ if __name__ == "__main__":
     app = Flask(__name__)
 
     connect_to_db(app)
-    print "Connected to DB."
+    print "Connected to Schedule DB."
