@@ -7,7 +7,7 @@
 <div class="col-xs-12 col-sm-6">
     <div class="content main centered">
         <h3>Login</h3>
-        <form action="/login" method="POST" id="login-form">
+        <form action="/process_login" method="POST" id="login-form">
             <label class="form-group">
                 <input class="form-control" type="email" name="email" placeholder="email">
             </label>
@@ -30,4 +30,9 @@
 
 <h2>Dashboard View</h2>
   <p><a href="/dashboard">Dashboard view</a></p>  
+
+  <h2>Logout</h2>
+  <form action='/logout' method="POST" id="logout-button">
+     <input class="form-control" type="submit" value="Logout">
+  </form>
 {% endblock %}

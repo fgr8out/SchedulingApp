@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from jinja2 import StrictUndefined
 from model import connect_to_db, db
 from model import *
+from twilio.rest import TwilioRestClient
 import os
 from secrets import TW_ACCOUNT_SID, TW_AUTH_TOKEN, TWILIO_NUMBER
 app = Flask(__name__)
@@ -22,7 +23,39 @@ print TW_ACCOUNT_SID, TW_AUTH_TOKEN, TWILIO_NUMBER
 def splash_login():
     """Login Page"""
 
+
     return render_template("login.html")
+
+@app.route('/process_login', methods=['POST'])
+def login_user():
+    """Log in user based on db info"""
+
+    email = request.form["email"]
+    password = request.form["password"]
+
+    print email
+    print password
+
+    user = Staff.query.filter_by(email=email).first()
+    if user.password == password:
+        session["staff_id"] = user.staff_id 
+        session["username"] = user.fname  
+        print session["staff_id"]
+
+    return redirect('/schedule')
+
+@app.route('/logout', methods=['POST'])
+def logout_user():
+    """Logout of session"""
+
+
+    session["staff_id"] = []
+    session["username"] = None 
+
+    print session["staff_id"]
+    print session["username"]
+    return redirect('/')
+
 
 
 @app.route('/schedule')
@@ -43,22 +76,14 @@ def submit_schedule():
     "Submit/Post webform to db"
 
     team = request.form['team_name']
-    print "team: ", team
     training = request.form['training_name']
-    print "training: ", training
     staff_id = request.form['staff_id']
     start_date = request.form['start_date']
     start_date = datetime.strptime(start_date, '%Y-%m-%d')
-    print "type: ", type(start_date)
-    print "start_date: ", start_date
     start_time = request.form['start_time']
     start_time = datetime.strptime(start_time, '%H:%M')
-    print "type: ", type(start_time)
-    print "start_time: ", start_time
     end_time = request.form['end_time']
     end_time = datetime.strptime(end_time, '%H:%M')
-    print "type: ", type(end_time)
-    print "end_time: ", end_time
 
     # Creates new user in DB
     new_training = TrainingAssignment(
@@ -73,223 +98,34 @@ def submit_schedule():
     db.session.commit()
 
     staff_poc = Staff.query.filter_by(staff_id=staff_id).first()    
-    print staff_poc
 
     poc_phone = staff_poc.work_phone
-    print poc_phone
 
+    client = TwilioRestClient(TW_ACCOUNT_SID, TW_AUTH_TOKEN)
+    message = client.messages.create(to="+1{}".format(poc_phone), 
+                                        from_=TWILIO_NUMBER,
+                                        body= "You have been schedule for {} training on {} starting {}.".format (training, start_date, start_time))
+
+    
     flash("Schedule Request has been created for {}".format(team))
-    return redirect("/schedule.html")
+    return redirect("/submit_schedule.html")
 
 
 @app.route('/dashboard')
 def process_request():
     """Show result of schedule choices on dashboard."""
-    all_assignments = TrainingAssignment.query.all()
-    print all_assignments
-    for assignment in all_assignments:
-        print assignment.team_id
 
+    if session["staff_id"] == "ADMIN":
+        assignments = TrainingAssignment.query.all()
 
-    return render_template("dashboard.html", assignments=all_assignments)
+    else: 
+        assignments = TrainingAssignment.query.filter_by(staff_id = session["staff_id"]).all()
 
+    print assignments
+    print session["staff_id"]
 
 
-
-
-# @app.route("/login", methods=['GET'])
-# def login_page():
-#     """Displays login page"""
-
-#     return render_template("login.html")
-
-
-
-# @app.route("/login", methods=['POST'])
-# def login():
-#     """Logs in the user, or denies access"""
-
-#     email = request.form.get("email")
-#     password = request.form.get("password")
-
-#     user = User.authenticate(email, password)
-
-#     if user:
-#         session["user_id"] = user.user_id
-#         session["fname"] = user.fname
-#         return redirect("/trips")
-
-#     else:
-#         flash("Your information could not be found in the system. Try again or sign up!")
-#         return redirect("/login")
-
-
-# @app.route('/register', methods=['POST'])
-# def register_process():
-#     """Process registration."""
-
-#     # Get form variables
-#     email = request.form["email"]
-#     password = request.form["password"]
-
-
-#     new_user = User(email=email, password=password)
-
-#     db.session.add(new_user)
-#     db.session.commit()
-
-#     flash("User %s added." % email)
-#     return redirect("/")
-
-
-# @app.route('/login', methods=['GET'])
-# def login_form():
-#     """Show login form."""
-
-#     return render_template("login_form.html")
-
-
-# @app.route('/login', methods=['POST'])
-# def login_process():
-#     """Process login."""
-
-#     # Get form variables
-#     email = request.form["email"]
-#     password = request.form["password"]
-
-#     user = User.query.filter_by(email=email).first()
-
-#     if not user:
-#         flash("No such user")
-#         return redirect("/login")
-
-#     if user.password != password:
-#         flash("Incorrect password")
-#         return redirect("/login")
-
-#     session["user_id"] = user.user_id
-
-#     flash("Logged in")
-#     return redirect("/users/%s" % user.user_id)
-
-
-# @app.route('/logout')
-# def logout():
-#     """Log out."""
-
-#     del session["user_id"]
-#     flash("Logged Out.")
-#     return redirect("/")
-
-
-# @app.route("/users")
-# def user_list():
-#     """Show list of users."""
-
-#     users = User.query.all()
-#     return render_template("user_list.html", users=users)
-
-
-# @app.route("/users/<int:user_id>")
-# def user_detail(user_id):
-#     """Show info about user."""
-
-#     user = User.query.get(user_id)
-#     return render_template("user.html", user=user)
-
-
-# @app.route("/movies")
-# def movie_list():
-#     """Show list of movies."""
-
-#     movies = Movie.query.order_by('title').all()
-#     return render_template("movie_list.html", movies=movies)
-
-
-# @app.route("/movies/<int:movie_id>", methods=['GET'])
-# def movie_detail(movie_id):
-#     """Show info about movie.
-
-#     If a user is logged in, let them add/edit a rating.
-#     """
-
-#     movie = Movie.query.get(movie_id)
-
-#     user_id = session.get("user_id")
-
-#     if user_id:
-#         user_rating = Rating.query.filter_by(
-#             movie_id=movie_id, user_id=user_id).first()
-
-#     else:
-#         user_rating = None
-
-#     return render_template("movie.html",
-#                            movie=movie,
-#                            user_rating=user_rating)
-
-
-# @app.route("/movies/<int:movie_id>", methods=['POST'])
-# def movie_detail_process(movie_id):
-#     """Add/edit a rating."""
-
-#     # Get form variables
-#     score = int(request.form["score"])
-
-#     user_id = session.get("user_id")
-#     if not user_id:
-#         raise Exception("No user logged in.")
-
-#     rating = Rating.query.filter_by(user_id=user_id, movie_id=movie_id).first()
-
-#     if rating:
-#         rating.score = score
-#         flash("Rating updated.")
-
-#     else:
-#         rating = Rating(user_id=user_id, movie_id=movie_id, score=score)
-#         flash("Rating added.")
-#         db.session.add(rating)
-
-#     db.session.commit()
-
-#     return redirect("/movies/%s" % movie_id)
-
-# @app.route("/pdf", methods=["POST"])
-# def generate_pdf():
-#     """Generates a PDF of the itinerary"""
-
-#     trip_id = int(request.form['tripId'])
-#     trip = Trip.query.get(trip_id)
-#     filename = "itinerary%d.pdf" % (trip_id)
-#     trip.generate_itinerary(filename)
-
-#     response_dict = {'filename': filename}
-#     response = json.dumps(response_dict)
-
-#     return response
-
-# @app.route("/send_text", methods=["POST", "GET"])
-# def send_reminders():
-#     """Sends reminders to trip viewers"""
-
-#     trip_id = int(request.form['tripId'])
-#     trip = Trip.query.get(trip_id)
-
-#     trip.send_SMS(tw_sid, tw_token)
-
-#     return "Success"
-
-
-# @app.route("/itinerary<int:trip_id>", methods=['GET', 'POST'])
-# def show_pdf(trip_id):
-#     """Displays the PDF itinerary"""
-
-#     filename = 'itinerary%r.pdf' % (trip_id)
-#     itinerary = open(filename, 'rb')
-
-#     return send_file(itinerary)
-
+    return render_template("dashboard.html", assignments=assignments)
 # #############################################################
 # # Jinja Filter
 
