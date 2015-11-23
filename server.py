@@ -1,12 +1,12 @@
-from flask import Flask, flash, json, redirect, render_template, request, send_file, session
+from flask import Flask, flash, redirect, render_template, request, send_file, session
 from flask_debugtoolbar import DebugToolbarExtension
 from datetime import datetime, timedelta
 from jinja2 import StrictUndefined
 from model import connect_to_db, db
 from model import *
 from twilio.rest import TwilioRestClient
-import os
 from secrets import TW_ACCOUNT_SID, TW_AUTH_TOKEN, TWILIO_NUMBER
+
 app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
@@ -21,8 +21,13 @@ print TW_ACCOUNT_SID, TW_AUTH_TOKEN, TWILIO_NUMBER
 
 @app.route('/')
 def splash_login():
-    """Login Page"""
+    """Splash Page"""
 
+    return render_template("splash.html")
+
+@app.route('/login')
+def sign_in():
+    """Login Page"""
 
     return render_template("login.html")
 
@@ -33,9 +38,6 @@ def login_user():
     email = request.form["email"]
     password = request.form["password"]
 
-    print email
-    print password
-
     user = Staff.query.filter_by(email=email).first()
     if user.password == password:
         session["staff_id"] = user.staff_id 
@@ -44,16 +46,18 @@ def login_user():
 
     return redirect('/schedule')
 
+
+
 @app.route('/logout', methods=['POST'])
 def logout_user():
     """Logout of session"""
 
-
-    session["staff_id"] = []
+    session["staff_id"] = None
     session["username"] = None 
 
-    print session["staff_id"]
-    print session["username"]
+    # print session["staff_id"]
+    # print session["username"]
+    flash('You were logged out')
     return redirect('/')
 
 
@@ -66,6 +70,8 @@ def choose_schedule():
     units = Unit.query.all()
     staff = Staff.query.all()
     trainings = Training.query.all()
+    building = Building.query.all()
+    room = Room.query.all()
 
     return render_template("schedule.html", teams=teams, trainings=trainings,
                            units=units, staff=staff)
@@ -85,6 +91,7 @@ def submit_schedule():
     end_time = request.form['end_time']
     end_time = datetime.strptime(end_time, '%H:%M')
 
+
     # Creates new user in DB
     new_training = TrainingAssignment(
         team_id=team,
@@ -93,6 +100,7 @@ def submit_schedule():
         start_date=start_date,
         start_time=start_time,
         end_time=end_time)
+
 
     db.session.add(new_training)
     db.session.commit()
@@ -103,13 +111,14 @@ def submit_schedule():
 
     client = TwilioRestClient(TW_ACCOUNT_SID, TW_AUTH_TOKEN)
     message = client.messages.create(to="+1{}".format(poc_phone), 
-                                        from_=TWILIO_NUMBER,
-                                        body= "You have been schedule for {} training on {} starting {}.".format (training, start_date, start_time))
+                                    from_=TWILIO_NUMBER,
+                                    body= "You have been scheduled for {} training on {} starting at {}.".format (training, start_date, start_time))
 
     
     flash("Schedule Request has been created for {}".format(team))
-    return redirect("/submit_schedule.html")
 
+    return redirect('/dashboard')
+    
 
 @app.route('/dashboard')
 def process_request():
@@ -126,6 +135,19 @@ def process_request():
 
 
     return render_template("dashboard.html", assignments=assignments)
+
+# @app.route('/pdf')
+# def make_pdf():
+#     """Test make PDF"""
+
+#     pdf = FPDF(fpdf = FPDF(orientation = 'P', unit = 'mm', format='A4')
+#     pdf.add_page()
+#     pdf.set_font('Arial', 'B', 16)
+#     pdf.cell(40, 10, 'Hello World!')
+#     fpdf.output(name= 'testing.pdf', dest = '/static', )
+
+#     return pdf.output
+
 # #############################################################
 # # Jinja Filter
 

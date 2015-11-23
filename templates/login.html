@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="col-xs-0 col-sm-3"></div>
-<div class="col-xs-12 col-sm-6">
-    <div class="content main centered">
-        <h3>Login</h3>
+
+<h2>Sign In</h2>
         <form action="/process_login" method="POST" id="login-form">
             <label class="form-group">
                 <input class="form-control" type="email" name="email" placeholder="email">
@@ -24,14 +21,6 @@
 </div>
 <div class="col-xs-0 col-sm-3"></div>
 
-
-<h3>View Schedule<h3>
-  <p><a href="/schedule">Page to schedule (is this a form?)</a></p>
-
-<h2>Dashboard View</h2>
-  <p><a href="/dashboard">Dashboard view</a></p>  
-
-  <h2>Logout</h2>
   <form action='/logout' method="POST" id="logout-button">
      <input class="form-control" type="submit" value="Logout">
   </form>

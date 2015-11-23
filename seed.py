@@ -136,10 +136,10 @@ def load_Staff():
                       staff_role=items[1],
                       fname=items[2],
                       lname=items[3],
-                      email=items[],
-                      username=items[],
-                      password=items[],
-                      work_phone=items[])
+                      email=items[4],
+                      username=items[5],
+                      password=items[6],
+                      work_phone=items[7])
 
         db.session.add(staff)
 

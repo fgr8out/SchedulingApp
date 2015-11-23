@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
- <table>
+ <table class="table table-striped">
     <tr>
         <th>Team</th>
         <th>Training</th>
@@ -21,4 +21,8 @@
     {% endfor %}
 </table>
 
+<p><a href="/schedule">Add to schedule</a></p>
+
+
+ <p><a href="/">Logout</a></p>
 {% endblock %}
