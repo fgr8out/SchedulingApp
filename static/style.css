@@ -4,25 +4,16 @@
    background-size: cover;
    text-align: center;
    min-height: 600px;
-   font-family: 'merriweather';
+   font-family: 'Merriweather', serif;
    color: white;
    margin: 0;
-   padding:230px;
-}
-.dashboard thead tr {
-  background-color: transparent; }
-  .dashboard thead tr th {
-    border-top: 0; }
-.dashboard th, .dashboard td {
-  border-left: 0;
-  border-right: 0; 
-}
+   padding:250px;
+  }
+
 /*dashboard table*/
 .navbar-default {
   background-color: #981b1e;
   background-border: #981b1e;
-}
-
-
-
+  min-height: 30px;
+  padding: 0px;
 }

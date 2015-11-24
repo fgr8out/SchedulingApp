@@ -1,9 +1,9 @@
-from flask import Flask, flash, redirect, render_template, request, send_file, session
+from flask import Flask, flash, redirect, render_template, request, session
 from flask_debugtoolbar import DebugToolbarExtension
-from datetime import datetime, timedelta
 from jinja2 import StrictUndefined
 from model import connect_to_db, db
 from model import *
+from datetime import datetime, date
 from twilio.rest import TwilioRestClient
 from secrets import TW_ACCOUNT_SID, TW_AUTH_TOKEN, TWILIO_NUMBER
 
@@ -11,9 +11,6 @@ app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "\xf0\x89\r\xbd/m\x9f<\xfd\xab8\xf00\xf8\x07t\x02\xec9\xd1\xa5&`B"
-
-# Normally, if you use an undefined variable in Jinja2, it fails silently.
-# This is horrible. Fix this so that, instead, it raises an error.
 app.jinja_env.undefined = StrictUndefined
 
 
@@ -42,24 +39,39 @@ def login_user():
     if user.password == password:
         session["staff_id"] = user.staff_id 
         session["username"] = user.fname  
-        print session["staff_id"]
+        
 
     return redirect('/schedule')
 
+# @app.route('/process_login', methods=['GET', 'POST'])
+# def login():
+
+#     error = None
+#     email = request.form["email"]
+#     password = request.form["password"]
+#     user = Staff.query.filter_by(email=email).first()
+
+#     if request.method == 'POST':
+#         if request.form['email'] != app.config['EMAIL']:
+#             error = 'Invalid username'
+#         elif request.form['password'] != app.config['PASSWORD']:
+#             error = 'Invalid password'
+#         else:
+#             session['logged_in'] = True
+#             session["staff_id"] = user.staff_id
+#             session["username"] = user.fname
+#             flash('You were logged in')
+#     return render_template('schedule.html', error=error)
 
 
 @app.route('/logout', methods=['POST'])
-def logout_user():
-    """Logout of session"""
+def logout():
+    """Log out."""
 
-    session["staff_id"] = None
-    session["username"] = None 
-
-    # print session["staff_id"]
-    # print session["username"]
-    flash('You were logged out')
-    return redirect('/')
-
+    del session["staff_id"]
+    del session["username"]
+    flash("You have logged out successfully.")
+    return redirect("/")
 
 
 @app.route('/schedule')
@@ -136,42 +148,21 @@ def process_request():
 
     return render_template("dashboard.html", assignments=assignments)
 
-# @app.route('/pdf')
-# def make_pdf():
-#     """Test make PDF"""
 
-#     pdf = FPDF(fpdf = FPDF(orientation = 'P', unit = 'mm', format='A4')
-#     pdf.add_page()
-#     pdf.set_font('Arial', 'B', 16)
-#     pdf.cell(40, 10, 'Hello World!')
-#     fpdf.output(name= 'testing.pdf', dest = '/static', )
 
-#     return pdf.output
 
-# #############################################################
-# # Jinja Filter
+# @app.route('/logout', methods=['POST'])
+# def logout_user():
+#     """Logout of session"""
 
-# @app.template_filter('datetime')
-# def _format_datetime(dt, format=None, trip_end=False):
-#     """Formats a datetime object for display """
+#     session["staff_id"] = None
+#     session["username"] = None 
 
-#     if trip_end:
-#         dt = dt - timedelta(1)
-
-#     if format == 'time':
-#         dt = datetime.strftime(dt, '%-I:%M %p')
-#     elif format == 'date':
-#         dt = datetime.strftime(dt, '%b %-d, %Y')
-#     elif format == 'date-short':
-#         dt = datetime.strftime(dt, '%b %-d')
-#     elif format == 'datetime pretty':
-#         dt = datetime.strftime(dt, '%-I:%M %p, %b %d, %Y')
-#     else:
-#         dt = datetime.strftime(dt, '%Y-%m-%dT%H:%M:%SZ')
-
-# return dt
-###############################################################################
-
+#     # print session["staff_id"]
+#     # print session["username"]
+#     flash('You were logged out')
+    # return render_template('/login')
+################################################################################
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension

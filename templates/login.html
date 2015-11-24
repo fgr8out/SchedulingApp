@@ -3,25 +3,23 @@
 
 {% block content %}
 
-<h2>Sign In</h2>
-        <form action="/process_login" method="POST" id="login-form">
-            <label class="form-group">
-                <input class="form-control" type="email" name="email" placeholder="email">
-            </label>
-            <br>
-            <label class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="password">
-            </label>
-            <br>
-            <label class="form-group" id="login-submission">
-                <input class="form-control" type="submit" value="enter">
-            </label>
-        </form>
-    </div>
-</div>
-<div class="col-xs-0 col-sm-3"></div>
+<h2>Login In</h2>
+<form action="/process_login" method="POST" id="login-form">
+    <label class="form-group">
+        <input class="form-control" type="email" name="email" placeholder="example@cns.gov"></label>
+<br>
 
-  <form action='/logout' method="POST" id="logout-button">
+    <label class="form-group">
+        <input class="form-control" type="password" name="password" placeholder="password"></label>
+
+<br>
+    <label class="form-group" id="login-submission">
+        <input class="form-control" type="submit" value="enter"></label>
+</form>
+
+<!-- <div class="col-xs-0 col-sm-3"></div> -->
+
+<form action='/' method="POST" id="logout-button">
      <input class="form-control" type="submit" value="Logout">
-  </form>
+</form>
 {% endblock %}

@@ -3,3 +3,4 @@ env
 secrets.sh
 secrets.py
 send_sms.py
+.DS_Store
