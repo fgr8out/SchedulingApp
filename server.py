@@ -64,14 +64,28 @@ def login_user():
 #     return render_template('schedule.html', error=error)
 
 
-@app.route('/logout', methods=['POST'])
-def logout():
-    """Log out."""
+# @app.route('/logout', methods=['POST'])
+# def logout():
+#     """Log out."""
 
-    del session["staff_id"]
-    del session["username"]
-    flash("You have logged out successfully.")
-    return redirect("/")
+#     del session["staff_id"]
+#     del session["username"]
+#     flash("You have logged out successfully.")
+#     return redirect("/")
+
+
+@app.route('/logout', methods=['POST'])
+def logout_user():
+    """Logout of session"""
+
+    session["staff_id"] = None
+    session["username"] = None 
+
+    # print session["staff_id"]
+    # print session["username"]
+    flash('You were logged out')
+    return render_template('/login.html')
+
 
 
 @app.route('/schedule')
@@ -151,17 +165,7 @@ def process_request():
 
 
 
-# @app.route('/logout', methods=['POST'])
-# def logout_user():
-#     """Logout of session"""
 
-#     session["staff_id"] = None
-#     session["username"] = None 
-
-#     # print session["staff_id"]
-#     # print session["username"]
-#     flash('You were logged out')
-    # return render_template('/login')
 ################################################################################
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point

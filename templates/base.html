@@ -1,50 +1,49 @@
 <!doctype html>
 <html>
 <head>
-<title> National Service Scheduler</title>
+<title>ServePlan</title>
+
 <!-- Bootstrap -->
 <link rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 <!-- Google Font -->
 <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
+
 <!-- Stylesheet -->
 <link rel="stylesheet" 
       href="static/style.css">
-
-
 </head>
-
 
 <body>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
-<div class="collapse navbar-collapse"
+  <div class="collapse navbar-collapse"
         id="bs-example-navbar-collapse-1">
 
-        <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav">
           <!-- <li><a href="/weathermap">Weather Map</a></li> -->
-          <li><a href="/">National Service Planner</a></li>
-        </ul>
+      <li><a href="/">ServePlan</a></li>
+    </ul>
 
         <!--The items on the right side of the nav bar-->
-        <ul class="nav navbar-nav navbar-right">
-          {% if "staff_id" in session %}
-            <li><a href="/schedule">Add to schedule</a></li>
-            <li><a href="/dashboard">Dashboard View</a></li>
-            <li><a href="/login">Logged in as: {{ session['staff_id'] }}</a></li>
-            <li><a href="/">Log Out</a><li>
-          {% else %}              
-            <li><a href="/login">Login</a></li>
-          {% endif %}             
-        </ul>
-
-      </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
-
-
-{% block content %} put content here {% endblock %}
-    </body>
+    <ul class="nav navbar-nav navbar-right">
+      {% if "staff_id" in session %}
+        <li><a href="/schedule">Add to schedule</a></li>
+        <li><a href="/dashboard">Dashboard View</a></li>
+        <li><a href="/login">Logged in as: {{ session['staff_id'] }}</a></li>
+        <li><a href="/">Log Out</a><li>
+      {% else %}              
+        <li><a href="/login">Login</a></li>
+      {% endif %}            
+    </ul>
+  </div>
+  <div>
+    {% for flash in get_flashed_messages() %}
+      {{ flash }}
+    {% endfor %}
+  </div>
+      {% block content %}{% endblock %}
+</body>
 </html>
