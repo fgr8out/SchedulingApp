@@ -14,15 +14,11 @@
         <td>{{assignment.team_id}}</td>
         <td>{{assignment.training_id}}</td>
         <td>{{assignment.staff_id}}</td>
-        <td>{{assignment.start_date}}</td>
-        <td>{{assignment.start_time}}</td>
-        <td>{{assignment.end_time}}</td>
+        <td>{{assignment.start_date|date}}</td>
+        <td>{{assignment.start_time|time}}</td>
+        <td>{{assignment.end_time|time}}</td>
     </tr>
     {% endfor %}
 </table>
 
-<div class="alert alert-success" role="alert">...</div>
-<div class="alert alert-info" role="alert">...</div>
-<div class="alert alert-warning" role="alert">...</div>
-<div class="alert alert-danger" role="alert">...</div>
 {% endblock %}

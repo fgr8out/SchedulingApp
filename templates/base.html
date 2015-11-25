@@ -39,11 +39,8 @@
       {% endif %}            
     </ul>
   </div>
-  <div>
-    {% for flash in get_flashed_messages() %}
-      {{ flash }}
-    {% endfor %}
-  </div>
+
+
       {% block content %}{% endblock %}
 </body>
 </html>

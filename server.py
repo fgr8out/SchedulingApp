@@ -162,8 +162,13 @@ def process_request():
 
     return render_template("dashboard.html", assignments=assignments)
 
+@app.template_filter('date')
+def datetimeformat(value, format='%b-%d-%y'):
+    return value.strftime(format)
 
-
+@app.template_filter('time')
+def timeformat(value, format='%I:%M %p'):
+    return value.strftime(format)
 
 
 ################################################################################
