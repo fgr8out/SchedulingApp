@@ -3,7 +3,8 @@
    background: url("/static/img/pic_flag_with_logo.jpg") center center;
    background-size: cover;
    text-align: center;
-   min-height: 600px;
+   min-height: 400px;
+   min-width:  1600px;
    font-family: 'Merriweather', serif;
    color: white;
    margin: 0;
@@ -11,9 +12,24 @@
   }
 
 /*dashboard table*/
+.navbar-brand{
+    font-family: 'Merriweather', serif;
+}
 .navbar-default {
   background-color: #981b1e;
   background-border: #981b1e;
   min-height: 30px;
   padding: 0px;
+}
+.navbar {
+  background-color: #Red;
+  position: relative;
+}
+
+.nav navbar-nav {
+  background-color: #981b1e;
+}
+
+.container {
+    position: relative;
 }

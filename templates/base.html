@@ -1,46 +1,92 @@
 <!doctype html>
 <html>
 <head>
-<title>ServePlan</title>
-
-<!-- Bootstrap -->
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<!-- Google Font -->
-<link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,900' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
-
-<!-- Stylesheet -->
-<link rel="stylesheet" 
-      href="static/style.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <link rel="icon" type="image/png" href="assets/paper_img/favicon.ico">
+    
+    <title>Service Plan</title>
+    
+    <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/ct-paper.css" rel="stylesheet"/>
+        
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 </head>
 
+<!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<!-- <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
+ -->
+
 <body>
-
-<!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse"
-        id="bs-example-navbar-collapse-1">
-
-    <ul class="nav navbar-nav">
-          <!-- <li><a href="/weathermap">Weather Map</a></li> -->
-      <li><a href="/">ServePlan</a></li>
+    <div id="navbar">
+     <nav class="navbar-ct-info" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+              <a class="navbar-brand" href="/">ServePlan</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+              {% if "username" in session %}
+                <li><a href="/schedule">Add to schedule</a></li>
+                <li><a href="/dashboard">Dashboard View</a></li>
+                <li><a href="/login">Logged in as: {{ session['username'] }}</a></li>
+              {% else %}              
+                <li><a href="/">Log Out</a><li>
+                <li><a href="/login">Login</a></li>
+              {% endif %}            
+                <li><a href="/schedule">Add to Schedule</a></li>
+                <li><a href="/dashboard">Dashboard View</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+</div><!--  end navbar --> 
+ 
+     
+<!-- <div class="container">
+    <ul class="nav navbar-nav navbar-right">
+      
     </ul>
+  </div> -->
 
         <!--The items on the right side of the nav bar-->
-    <ul class="nav navbar-nav navbar-right">
-      {% if "staff_id" in session %}
-        <li><a href="/schedule">Add to schedule</a></li>
-        <li><a href="/dashboard">Dashboard View</a></li>
-        <li><a href="/login">Logged in as: {{ session['staff_id'] }}</a></li>
-        <li><a href="/">Log Out</a><li>
-      {% else %}              
-        <li><a href="/login">Login</a></li>
-      {% endif %}            
-    </ul>
-  </div>
+<!-- 
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+<!-- Latest compiled and minified JavaScript -->
 
 
       {% block content %}{% endblock %}
 </body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+
+<script src="bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+
+<!--  Plugins -->
+<script src="assets/js/ct-paper-checkbox.js"></script>
+<script src="assets/js/ct-paper-radio.js"></script>
+<script src="assets/js/bootstrap-select.js"></script>
+<script src="assets/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="assets/js/ct-paper.js"></script>
 </html>

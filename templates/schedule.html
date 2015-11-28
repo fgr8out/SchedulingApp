@@ -17,8 +17,21 @@
 
 
 <p>Pick a date here:</p>
-  <input name="start_date" type=date>
-<!--   <input name="end_date" type=date step=7 max=2016-03-11> -->
+    <!-- markup -->
+    
+    <input name= "start_date" class="datepicker form-control" type="text"/>
+    
+    <!-- javascript -->
+    
+    $('.datepicker').datepicker({
+    
+             weekStart:1,
+    
+             color: '{color}'
+    
+    });
+  <!-- <input name="start_date" type=date> -->
+  <!-- <input name="end_date" type=date step=7 max=2016-03-11> -->
 
 <p>Choose Team</p>
   <select name="team_name">

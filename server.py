@@ -156,9 +156,8 @@ def process_request():
     else: 
         assignments = TrainingAssignment.query.filter_by(staff_id = session["staff_id"]).all()
 
-    print assignments
-    print session["staff_id"]
-
+    # print assignments
+    # print session["staff_id"]
 
     return render_template("dashboard.html", assignments=assignments)
 
