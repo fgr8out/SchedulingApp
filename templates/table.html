@@ -2,13 +2,13 @@
 {% block content %}
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    
-    <title></title>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<title>Fresh Bootstrap Table by Creative Tim</title>
 
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     
     <link href="static/css/bootstrap.css" rel="stylesheet" />
     <link href="static/css/fresh-bootstrap-table.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="fresh-table full-screen-table toolbar-color-blue style="display:block;"">
+    <div class="fresh-table full-screen-table toolbar-color-azure style="display:block;"">
     <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange                  
             Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
     -->
@@ -34,11 +34,11 @@
 
             <thead>
                 <th data-field="team">Team Name</th>
-                <th data-field="training" data-sortable="true">Training</th>
-                <th data-field="Start Date" data-sortable="true">Start Date</th>
-                <th data-field="Start Time" data-sortable="true">Start Time</th>
-                <th data-field="End Time" data-sortable="true">End Time</th>
-                <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+            	<th data-field="training" data-sortable="true">Training</th>
+            	<th data-field="Start Date" data-sortable="true">Start Date</th>
+            	<th data-field="Start Time" data-sortable="true">Start Time</th>
+            	<th data-field="End Time" data-sortable="true">End Time</th>
+            	<th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
             </thead>
             <tbody>
         {% for assignment in assignments %}
@@ -148,3 +148,7 @@
                 '</a>'
             ].join('');
         }
+       
+    </script>
+
+</html>
