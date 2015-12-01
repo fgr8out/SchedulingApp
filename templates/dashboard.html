@@ -26,19 +26,19 @@
             Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
     -->
         
-        <div class="toolbar">
+<!--         <div class="toolbar">
             <button id="alertBtn" class="btn btn-default">Alert</button>
-        </div>
+        </div> -->
         
         <table id="fresh-table" class="table">
 
             <thead>
                 <th data-field="team">Team Name</th>
                 <th data-field="training" data-sortable="true">Training</th>
+                <th data-field="trainer" data-sortable="true">Trainer</th>
                 <th data-field="Start Date" data-sortable="true">Start Date</th>
                 <th data-field="Start Time" data-sortable="true">Start Time</th>
-                <th data-field="End Time" data-sortable="true">End Time</th>
-                <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                <th data-field="End Time" data-formatter="true">End Time</th>
             </thead>
             <tbody>
         {% for assignment in assignments %}

@@ -1177,7 +1177,7 @@ a.text-warning:hover {
   color: #66512c;
 }
 .text-danger {
-  color: #a94442;
+  color: #e31c3d;
 }
 a.text-danger:hover {
   color: #843534;
@@ -2661,10 +2661,10 @@ select[multiple].form-group-lg .form-control {
 .has-error.checkbox label,
 .has-error.radio-inline label,
 .has-error.checkbox-inline label {
-  color: #a94442;
+  color: #e31c3d;
 }
 .has-error .form-control {
-  border-color: #a94442;
+  border-color: #e31c3d;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
@@ -2674,12 +2674,12 @@ select[multiple].form-group-lg .form-control {
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
 }
 .has-error .input-group-addon {
-  color: #a94442;
+  color: #e31c3d;
   background-color: #f2dede;
-  border-color: #a94442;
+  border-color: #e31c3d;
 }
 .has-error .form-control-feedback {
-  color: #a94442;
+  color: #e31c3d;
 }
 .has-feedback label ~ .form-control-feedback {
   top: 25px;
@@ -4775,7 +4775,7 @@ a.thumbnail.active {
   color: #66512c;
 }
 .alert-danger {
-  color: #a94442;
+  color: #e31c3d;
   background-color: #f2dede;
   border-color: #ebccd1;
 }
@@ -5060,26 +5060,26 @@ a.list-group-item-warning.active:focus {
   border-color: #8a6d3b;
 }
 .list-group-item-danger {
-  color: #a94442;
+  color: #e31c3d;
   background-color: #f2dede;
 }
 a.list-group-item-danger {
-  color: #a94442;
+  color: #e31c3d;
 }
 a.list-group-item-danger .list-group-item-heading {
   color: inherit;
 }
 a.list-group-item-danger:hover,
 a.list-group-item-danger:focus {
-  color: #a94442;
+  color: #e31c3d;
   background-color: #ebcccc;
 }
 a.list-group-item-danger.active,
 a.list-group-item-danger.active:hover,
 a.list-group-item-danger.active:focus {
   color: #fff;
-  background-color: #a94442;
-  border-color: #a94442;
+  background-color: #e31c3d;
+  border-color: #e31c3d;
 }
 .list-group-item-heading {
   margin-top: 0;
@@ -5410,7 +5410,7 @@ a.list-group-item-danger.active:focus {
   border-color: #ebccd1;
 }
 .panel-danger > .panel-heading {
-  color: #a94442;
+  color: #e31c3d;
   background-color: #f2dede;
   border-color: #ebccd1;
 }
@@ -5419,7 +5419,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-heading .badge {
   color: #f2dede;
-  background-color: #a94442;
+  background-color: #e31c3d;
 }
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;

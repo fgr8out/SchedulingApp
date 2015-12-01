@@ -70,15 +70,31 @@
     z-index: 3;
 }
 .register-footer{
-    bottom: 20px;
+    bottom: 120px;
     color: #fff;
     position: absolute;
     z-index: 3;
     width: 100%;
 }
 .register-footer .fa-heart{
-    color: #EB5E28;
+    color: #981b1e;
 }
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+footer, .footer-demo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+}
+
 .register-card{
     background-color: #FF8F5E;
     border-radius: 8px;
@@ -148,4 +164,8 @@
 }
 .alert h5{
     margin-bottom: 10px;
+}
+
+.nav.navbar-nav.navbar-right > li > a, .navbar-brand {
+    color: white;
 }
