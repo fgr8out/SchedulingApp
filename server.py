@@ -43,26 +43,14 @@ def login_user():
 
     return redirect('/schedule')
 
-# @app.route('/process_login', methods=['GET', 'POST'])
-# def login():
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('staff_id', None)
+    return redirect("/")
 
-#     error = None
-#     email = request.form["email"]
-#     password = request.form["password"]
-#     user = Staff.query.filter_by(email=email).first()
-
-#     if request.method == 'POST':
-#         if request.form['email'] != app.config['EMAIL']:
-#             error = 'Invalid username'
-#         elif request.form['password'] != app.config['PASSWORD']:
-#             error = 'Invalid password'
-#         else:
-#             session['logged_in'] = True
-#             session["staff_id"] = user.staff_id
-#             session["username"] = user.fname
-#             flash('You were logged in')
-#     return render_template('schedule.html', error=error)
-
+# set the secret key.  keep this really secret:
+app.secret_key = '\xf0\x89\r\xbd/m\x9f<\xfd\xab8\xf00\xf8\x07t\x02\xec9\xd1\xa5&`B'
 
 # @app.route('/logout', methods=['POST'])
 # def logout():
@@ -74,17 +62,17 @@ def login_user():
 #     return redirect("/")
 
 
-@app.route('/logout', methods=['POST'])
-def logout_user():
-    """Logout of session"""
+# @app.route('/logout', methods=['POST'])
+# def logout_user():
+#     """Logout of session"""
 
-    session["staff_id"] = None
-    session["username"] = None 
+#     session["staff_id"] = None
+#     session["username"] = None 
 
-    # print session["staff_id"]
-    # print session["username"]
-    flash('You were logged out')
-    return render_template('/login.html')
+#     # print session["staff_id"]
+#     # print session["username"]
+#     flash('You were logged out')
+#     return render_template('/login.html')
 
 
 
@@ -145,7 +133,7 @@ def submit_schedule():
 
     return redirect('/dashboard')
     
-
+"Show schedule posted to database"
 @app.route('/dashboard')
 def process_request():
     """Show result of schedule choices on dashboard."""
@@ -161,6 +149,7 @@ def process_request():
 
     return render_template("dashboard.html", assignments=assignments)
 
+"Reformat datetime on dashboard"
 @app.template_filter('date')
 def datetimeformat(value, format='%b-%d-%y'):
     return value.strftime(format)
@@ -174,7 +163,7 @@ def timeformat(value, format='%I:%M %p'):
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
-    app.debug = True
+    # app.debug = True
 
     connect_to_db(app)
 
